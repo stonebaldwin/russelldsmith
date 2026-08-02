@@ -173,6 +173,25 @@ export function htmlToMdx(
   // 1. Remove junk blocks.
   for (const sel of JUNK_SELECTORS) $(sel).remove();
 
+  // 1.5. Unwrap WordPress layout tables (no <th>, cells contain block content
+  // like headings/paragraphs/images). turndown leaves these as raw HTML, which
+  // react-markdown won't render — so flatten them to normal flow. Genuine data
+  // tables (inline cell content) are left for turndown-gfm to convert.
+  $("table").each((_, el) => {
+    const $t = $(el);
+    if ($t.find("th").length) return;
+    const hasBlock = $t
+      .find("td")
+      .toArray()
+      .some((td) => $(td).find("h1,h2,h3,h4,h5,h6,p,ul,ol,div,img,table,blockquote").length > 0);
+    if (!hasBlock) return;
+    const parts = $t
+      .find("td")
+      .toArray()
+      .map((td) => $(td).html() || "");
+    $t.replaceWith(`<div>${parts.join("\n")}</div>`);
+  });
+
   // 2. Convert iframes (video embeds) into a plain link so MDX stays safe.
   $("iframe").each((_, el) => {
     const src = $(el).attr("src") || $(el).attr("data-src");
@@ -201,9 +220,12 @@ export function htmlToMdx(
     const filename = filenameFromUrl(abs, usedNames);
     const localPath = `/images/blog/${slug}/${filename}`;
     images.push({ srcUrl: abs, localPath, filename });
-    const alt = $img.attr("alt") || "";
+    // De-brand alt text (Team Move -> Russell D Smith) — attributes aren't
+    // covered by the text-node walk below.
+    const altRes = debrandText($img.attr("alt") || "");
+    debrandCount += altRes.count;
     // Reset the node to a clean <img> (drop srcset/sizes/lazy/data-*).
-    const clean = $("<img>").attr("src", localPath).attr("alt", alt);
+    const clean = $("<img>").attr("src", localPath).attr("alt", altRes.text);
     $img.replaceWith(clean);
   });
 

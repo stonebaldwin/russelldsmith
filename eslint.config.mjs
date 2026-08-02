@@ -21,7 +21,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    "workers/redirect/explicit-map.js",
+    "workers/**",
   ]),
 ]);
 

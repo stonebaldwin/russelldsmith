@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { cn } from "@/lib/cn";
@@ -15,7 +16,9 @@ export function MarkdownBody({ markdown, className }: { markdown: string; classN
     <div className={cn("article-body", className)}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
-        rehypePlugins={[rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]]}
+        // rehype-raw first: parse any residual migrated HTML (e.g. data tables)
+        // into the tree so it renders; then add heading anchors.
+        rehypePlugins={[rehypeRaw, rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]]}
         components={{
           a({ href, children, node, ...props }) {
             void node;

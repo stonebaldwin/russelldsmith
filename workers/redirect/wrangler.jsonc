@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Redirect-only Worker for the OLD domain. KEEP-FOREVER INFRASTRUCTURE.
+  // Deploy this to the teammovemortgage.com Cloudflare zone. It 301s every
+  // request to the matching path on russelldsmith.com (see worker.js).
+  "name": "teammovemortgage-redirect",
+  "main": "worker.js",
+  "compatibility_date": "2025-06-01",
+  // Uncomment once teammovemortgage.com is on Cloudflare (nameservers pointed):
+  // "routes": [
+  //   { "pattern": "teammovemortgage.com/*", "zone_name": "teammovemortgage.com" },
+  //   { "pattern": "www.teammovemortgage.com/*", "zone_name": "teammovemortgage.com" }
+  // ]
+}

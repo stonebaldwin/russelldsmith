@@ -1,0 +1,14 @@
+{
+  "name": "teammovemortgage-redirect",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Keep-forever redirect Worker: 301s teammovemortgage.com -> russelldsmith.com, path-for-path.",
+  "scripts": {
+    "regenerate": "cd ../.. && npm run gen:redirect",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.118.0"
+  }
+}

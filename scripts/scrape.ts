@@ -226,12 +226,12 @@ async function main() {
     let heroAlt: string | undefined;
     if (heroCandidate && ok.get(heroCandidate.localPath)) {
       hero = heroCandidate.localPath;
-      heroAlt = post.featured!.alt || post.title;
+      heroAlt = debrandText(post.featured!.alt || post.title).text;
     } else {
       const firstOk = images.find((im) => ok.get(im.localPath));
       if (firstOk) {
         hero = firstOk.localPath;
-        heroAlt = post.title;
+        heroAlt = debrandText(post.title).text;
         flags.push("hero-from-body");
       } else {
         flags.push("no-hero");
