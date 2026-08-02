@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts, getPostsByCategory } from "@/lib/content";
 import { LANDING_PAGES } from "@/lib/routes";
@@ -7,6 +8,10 @@ import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
 import { JsonLd } from "@/components/JsonLd";
 import { websiteJsonLd } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const HOME_RAILS = [
   { slug: "va-loans", title: "VA Loans" },
