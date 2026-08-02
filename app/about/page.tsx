@@ -27,6 +27,18 @@ export default function AboutPage() {
         </div>
       </div>
 
+      <figure className="mt-8">
+        {/* eslint-disable-next-line @next/next/no-img-element -- preserved local team photo */}
+        <img
+          src="/media/site/team-move-mortgage-about-page-pic.jpg"
+          alt="Russell D Smith and his mortgage team"
+          className="w-full rounded-xl border border-line object-cover"
+        />
+        <figcaption className="mt-2 text-sm text-muted">
+          Russell D Smith and his mortgage team.
+        </figcaption>
+      </figure>
+
       <div className="article-body mt-8">
         <p>{AUTHOR.bio}</p>
         <p>
