@@ -13,6 +13,7 @@
     "typecheck": "tsc --noEmit",
     "content:scrape": "tsx scripts/scrape.ts",
     "content:recover": "tsx scripts/recover-wayback.ts",
+    "content:media": "tsx scripts/scrape-media.ts",
     "content:manifest": "tsx scripts/build-manifest.ts",
     "gen:redirect": "tsx scripts/gen-redirect-worker.ts",
     "test:redirects": "tsx scripts/gen-redirect-worker.ts && tsx scripts/build-manifest.ts && tsx scripts/test-redirects.ts",
