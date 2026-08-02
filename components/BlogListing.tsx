@@ -9,7 +9,6 @@ export function BlogListing({
   page = 1,
   totalPages = 1,
   rootPath = "/blog/",
-  eyebrow,
 }: {
   title: string;
   description?: string;
@@ -17,15 +16,11 @@ export function BlogListing({
   page?: number;
   totalPages?: number;
   rootPath?: string;
-  eyebrow?: string;
 }) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
       <header className="max-w-2xl">
-        {eyebrow ? (
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">{eyebrow}</p>
-        ) : null}
-        <h1 className="mt-1 font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+        <h1 className="font-serif text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
           {title}
         </h1>
         {description ? <p className="mt-3 text-lg leading-8 text-muted">{description}</p> : null}

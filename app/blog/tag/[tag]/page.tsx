@@ -34,7 +34,6 @@ export default async function TagPage({
   const label = tagLabel(tag);
   return (
     <BlogListing
-      eyebrow="Tag"
       title={label}
       description={`Guides tagged “${label}.”`}
       posts={posts}

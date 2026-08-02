@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Post } from "@/lib/content";
 import { Thumb } from "./Thumb";
-import { CategoryEyebrow } from "./CategoryEyebrow";
 import { PostMeta } from "./PostMeta";
 
 export function ArticleCard({
@@ -26,8 +25,7 @@ export function ArticleCard({
         />
       </Link>
       <div className="mt-3 flex flex-1 flex-col">
-        <CategoryEyebrow slug={post.categories[0]} />
-        <h3 className="mt-1.5 font-serif text-lg leading-snug font-semibold text-ink">
+        <h3 className="font-serif text-lg leading-snug font-semibold text-ink">
           <Link href={post.url} className="transition-colors hover:text-accent">
             {post.title}
           </Link>

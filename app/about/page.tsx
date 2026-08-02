@@ -22,7 +22,6 @@ export default function AboutPage() {
           {SITE.shortName}
         </span>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">About</p>
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-ink">{AUTHOR.name}</h1>
           <p className="text-muted">{AUTHOR.role}</p>
         </div>

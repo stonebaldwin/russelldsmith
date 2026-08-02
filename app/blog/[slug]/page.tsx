@@ -14,7 +14,6 @@ import { AuthorByline } from "@/components/AuthorByline";
 import { TableOfContents } from "@/components/TableOfContents";
 import { RelatedPosts } from "@/components/RelatedPosts";
 import { CtaBlock } from "@/components/CtaBlock";
-import { CategoryEyebrow } from "@/components/CategoryEyebrow";
 import { Thumb } from "@/components/Thumb";
 import { JsonLd } from "@/components/JsonLd";
 
@@ -115,8 +114,7 @@ export default async function ArticlePage({
       </nav>
 
       <header className="mx-auto max-w-3xl">
-        <CategoryEyebrow slug={category} />
-        <h1 className="mt-3 font-serif text-3xl leading-[1.12] font-semibold tracking-tight text-ink sm:text-[2.6rem]">
+        <h1 className="font-serif text-3xl leading-[1.12] font-semibold tracking-tight text-ink sm:text-[2.6rem]">
           {post.title}
         </h1>
         {post.description ? (

@@ -21,10 +21,11 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, "Times New Roman",
-    serif;
+  /* Site-wide font: Segoe UI (system font) for both body and headings. */
+  --font-sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);

@@ -18,8 +18,7 @@ const CONTACT = {
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">Contact</p>
-      <h1 className="mt-2 font-serif text-4xl font-semibold tracking-tight text-ink">
+      <h1 className="font-serif text-4xl font-semibold tracking-tight text-ink">
         Let&rsquo;s talk about your mortgage
       </h1>
       <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">

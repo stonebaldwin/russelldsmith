@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Post } from "@/lib/content";
 import { Thumb } from "./Thumb";
-import { CategoryEyebrow } from "./CategoryEyebrow";
 import { PostMeta } from "./PostMeta";
 
 /** The homepage lead story: large image + confident headline + dek. */
@@ -20,8 +19,7 @@ export function HeroFeature({ post }: { post: Post }) {
         />
       </Link>
       <div>
-        <CategoryEyebrow slug={post.categories[0]} className="text-xs" />
-        <h2 className="mt-2 font-serif text-3xl leading-[1.1] font-semibold tracking-tight text-ink sm:text-4xl">
+        <h2 className="font-serif text-3xl leading-[1.1] font-semibold tracking-tight text-ink sm:text-4xl">
           <Link href={post.url} className="transition-colors hover:text-accent">
             {post.title}
           </Link>

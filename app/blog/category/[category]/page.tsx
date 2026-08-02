@@ -34,7 +34,6 @@ export default async function CategoryPage({
   const label = categoryLabel(category);
   return (
     <BlogListing
-      eyebrow="Category"
       title={label}
       description={`Every ${label} guide, in one place.`}
       posts={posts}

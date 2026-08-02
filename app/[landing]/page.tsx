@@ -74,10 +74,7 @@ export default async function LandingPage({
       />
 
       <header className="max-w-3xl">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-accent">
-          Loan program
-        </p>
-        <h1 className="mt-2 font-serif text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+        <h1 className="font-serif text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
           {page.title}
         </h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">{page.description}</p>
