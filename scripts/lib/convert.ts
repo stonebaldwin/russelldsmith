@@ -264,7 +264,29 @@ export function htmlToMdx(
   return { markdown, images, debrandCount, flags };
 }
 
-/** Download an image to disk; returns true on success. Node-only. */
+/**
+ * Sniff bytes to distinguish real images from the HTML error pages the origin
+ * sometimes returns with a 200 status for missing images.
+ */
+function sniffKind(buf: Buffer): "image" | "html" | "other" {
+  const head = buf.subarray(0, 64).toString("latin1").trim().toLowerCase();
+  if (
+    head.startsWith("<!doctype") ||
+    head.startsWith("<html") ||
+    head.startsWith("<head") ||
+    head.startsWith("<body")
+  ) {
+    return "html";
+  }
+  if (buf[0] === 0xff && buf[1] === 0xd8) return "image"; // JPEG
+  if (buf[0] === 0x89 && buf[1] === 0x50 && buf[2] === 0x4e && buf[3] === 0x47) return "image"; // PNG
+  if (buf[0] === 0x47 && buf[1] === 0x49 && buf[2] === 0x46) return "image"; // GIF
+  if (buf.subarray(0, 4).toString("latin1") === "RIFF" && buf.subarray(8, 12).toString("latin1") === "WEBP") return "image";
+  if (head.includes("<svg")) return "image"; // SVG
+  return "other";
+}
+
+/** Download an image to disk; returns true only for a VALID image. Node-only. */
 export async function downloadImage(
   srcUrl: string,
   destAbsPath: string,
@@ -272,14 +294,20 @@ export async function downloadImage(
 ): Promise<boolean> {
   const fs = await import("node:fs");
   const path = await import("node:path");
-  if (fs.existsSync(destAbsPath)) return true; // already fetched
+  if (fs.existsSync(destAbsPath)) return true; // already fetched + validated
   const ac = new AbortController();
   const timer = setTimeout(() => ac.abort(), 45000);
   try {
     const res = await fetch(srcUrl, { headers: { "User-Agent": ua }, signal: ac.signal });
     if (!res.ok) return false;
+    const ct = (res.headers.get("content-type") || "").toLowerCase();
     const buf = Buffer.from(await res.arrayBuffer());
-    if (buf.byteLength < 512) return false; // skip tracking pixels / empties
+    if (buf.byteLength < 512) return false; // tracking pixels / empties
+    const kind = sniffKind(buf);
+    // Reject HTML error pages served as images; require an image signature or
+    // an explicit image/* content-type.
+    if (kind === "html") return false;
+    if (kind !== "image" && !ct.startsWith("image/")) return false;
     fs.mkdirSync(path.dirname(destAbsPath), { recursive: true });
     fs.writeFileSync(destAbsPath, buf);
     return true;

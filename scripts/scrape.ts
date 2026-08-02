@@ -31,7 +31,6 @@ import { buildManifest } from "./lib/manifest.js";
 
 const ROOT = process.cwd();
 const CONTENT_DIR = path.join(ROOT, "content", "blog");
-const IMG_ROOT = path.join(ROOT, "public", "images", "blog");
 const SITE_URL = "https://russelldsmith.com";
 
 // ---------- args ----------
@@ -188,38 +187,60 @@ async function main() {
     const categorySlugs = post.categories.map((c) => c.slug);
     const tagSlugs = post.tags.map((t) => t.slug);
 
-    // Hero: featured media, else first body image.
-    let hero: string | undefined;
-    let heroAlt: string | undefined;
-    const downloads: { srcUrl: string; dest: string }[] = images.map((im) => ({
-      srcUrl: im.srcUrl,
-      dest: path.join(ROOT, "public", im.localPath.replace(/^\//, "")),
-    }));
-    if (post.featured?.src) {
-      const heroName = `hero${extFromUrl(post.featured.src)}`;
-      hero = `/images/blog/${slug}/${heroName}`;
-      heroAlt = post.featured.alt || post.title;
-      downloads.unshift({ srcUrl: post.featured.src, dest: path.join(IMG_ROOT, slug, heroName) });
-    } else if (images.length) {
-      hero = images[0].localPath;
-      heroAlt = post.title;
-      flags.push("hero-from-body");
+    // Full image list: featured hero candidate + body images.
+    const heroCandidate = post.featured?.src
+      ? {
+          srcUrl: post.featured.src,
+          localPath: `/images/blog/${slug}/hero${extFromUrl(post.featured.src)}`,
+        }
+      : null;
+    const allImages = [...(heroCandidate ? [heroCandidate] : []), ...images];
+
+    // Download + validate (rejects HTML-404s the origin serves with 200).
+    const ok = new Map<string, boolean>();
+    if (!DRY && !NO_IMAGES) {
+      await Promise.all(
+        allImages.map((im) =>
+          imgLimit(async () => {
+            const dest = path.join(ROOT, "public", im.localPath.replace(/^\//, ""));
+            ok.set(im.localPath, await downloadImage(im.srcUrl, dest, USER_AGENT));
+          }),
+        ),
+      );
     } else {
-      flags.push("no-hero");
+      allImages.forEach((im) => ok.set(im.localPath, true));
     }
 
-    // Download images.
-    if (!DRY && !NO_IMAGES && downloads.length) {
-      const results = await Promise.all(
-        downloads.map((d) => imgLimit(() => downloadImage(d.srcUrl, d.dest, USER_AGENT))),
-      );
-      const failed = results.filter((ok) => !ok).length;
-      if (failed) flags.push(`images-failed:${failed}/${downloads.length}`);
+    // Drop failed body images from the markdown — never ship a broken <img>.
+    let body = markdown;
+    for (const im of images.filter((i) => ok.get(i.localPath) === false)) {
+      const esc = im.localPath.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      body = body.replace(new RegExp(`!\\[[^\\]]*\\]\\(${esc}\\)`, "g"), "");
     }
+    body = body.replace(/\n{3,}/g, "\n\n").trim() + "\n";
+
+    // Hero: featured if it downloaded, else first valid body image.
+    let hero: string | undefined;
+    let heroAlt: string | undefined;
+    if (heroCandidate && ok.get(heroCandidate.localPath)) {
+      hero = heroCandidate.localPath;
+      heroAlt = post.featured!.alt || post.title;
+    } else {
+      const firstOk = images.find((im) => ok.get(im.localPath));
+      if (firstOk) {
+        hero = firstOk.localPath;
+        heroAlt = post.title;
+        flags.push("hero-from-body");
+      } else {
+        flags.push("no-hero");
+      }
+    }
+    const skipped = [...ok.values()].filter((v) => !v).length;
+    if (skipped) flags.push(`images-skipped:${skipped}`);
 
     // Write MDX.
     const title = debrandText(post.title).text;
-    const description = computeDescription(post, markdown);
+    const description = computeDescription(post, body);
     const frontmatter = emitFrontmatter([
       ["title", title],
       ["slug", slug],
@@ -233,7 +254,7 @@ async function main() {
       ["canonical", `${SITE_URL}/blog/${slug}/`],
       ["source_url", postUrl],
     ]);
-    if (!DRY) fs.writeFileSync(path.join(CONTENT_DIR, `${slug}.mdx`), frontmatter + "\n" + markdown);
+    if (!DRY) fs.writeFileSync(path.join(CONTENT_DIR, `${slug}.mdx`), frontmatter + "\n" + body);
 
     processed.push({ slug, date: post.date, title, categories: categorySlugs, flags });
     console.log(

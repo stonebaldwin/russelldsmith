@@ -1,10 +1,29 @@
 {
   "categories": {
-    "fha": "FHA",
     "frequently-asked-questions": "Frequently Asked Questions",
-    "products": "Products"
+    "va-loans": "VA Loans",
+    "fha": "FHA",
+    "products": "Products",
+    "1st-time-buyers": "1st Time Buyers",
+    "local-resources-best-places-to-live-in-nc-and-sc-including-subdivisions-schools-things-to-do": "Locals Only",
+    "market-updates": "Market Updates",
+    "recent-changes": "Recent Changes",
+    "tips": "Tips",
+    "usda": "USDA"
   },
   "tags": {
+    "multiple-va-loans": "Multiple VA loans",
+    "va-builder-id": "va builder id",
+    "va-construction-loan": "VA construction loan",
+    "va-credit-score-requirements": "VA credit score requirements",
+    "va-home-loan": "va home loan",
+    "va-home-loan-occupancy-requirements": "va home loan occupancy requirements",
+    "va-loan-acreage": "VA loan acreage",
+    "va-loan-closing-costs": "VA loan closing costs",
+    "va-loan-faq": "VA loan faq",
+    "va-loan-limits-2020": "VA loan limits 2020",
+    "va-loans": "VA Loans",
+    "va-student-loan-requirements": "VA student loan requirements",
     "credit-reports": "credit reports",
     "credit-score-for-fha-loan": "credit score for fha loan",
     "credit-scoring": "credit scoring",
@@ -25,6 +44,22 @@
     "minimum-credit-score-for-fha": "minimum credit score for fha",
     "minimum-credit-score-for-fha-loan": "minimum credit score for fha loan",
     "mortgage-credit-score": "mortgage credit score",
-    "mortgage-faqs": "Mortgage FAQ's"
+    "mortgage-faqs": "Mortgage FAQ's",
+    "conway": "Conway",
+    "horry-county": "Horry County",
+    "how-to-search-for-usda-eligible-properties": "how to search for USDA eligible properties",
+    "loris": "Loris",
+    "myrtle-beach": "Myrtle Beach",
+    "north-myrtle-beach": "North Myrtle Beach",
+    "realtors": "Realtors",
+    "team-move": "Team Move",
+    "usda": "USDA",
+    "usda-home-loan-updates": "USDA home loan updates",
+    "usda-home-loans": "USDA home loans",
+    "usda-loans": "USDA loans",
+    "usda-loans-myrtle-beach": "USDA loans Myrtle Beach",
+    "usda-loans-sc": "USDA loans SC",
+    "usda-rural-development": "USDA Rural Development",
+    "usda-rural-development-guidelines": "USDA Rural Development Guidelines"
   }
 }

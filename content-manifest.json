@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-02T20:13:21.022Z",
+  "generatedAt": "2026-08-02T20:37:05.036Z",
   "siteUrl": "https://russelldsmith.com",
   "counts": {
     "posts": 3,
@@ -68,7 +68,7 @@
         "mortgage-faqs"
       ],
       "recovered": false,
-      "hero": true,
+      "hero": false,
       "source_url": "https://teammovemortgage.com/blog/fha-minimum-credit-score/"
     },
     {
