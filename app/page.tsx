@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllPosts, getPostsByCategory } from "@/lib/content";
 import { LANDING_PAGES } from "@/lib/routes";
-import { HeroFeature } from "@/components/HeroFeature";
+import { HomeHero } from "@/components/HomeHero";
 import { ArticleCard } from "@/components/ArticleCard";
 import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
@@ -22,70 +22,71 @@ const HOME_RAILS = [
 
 export default function Home() {
   const posts = getAllPosts();
-
-  if (!posts.length) {
-    return (
-      <div className="mx-auto max-w-2xl px-6 py-24 text-center">
-        <h1 className="font-serif text-3xl font-semibold text-ink">Russell D Smith</h1>
-        <p className="mt-3 text-muted">Guides are being migrated. Check back shortly.</p>
-      </div>
-    );
-  }
-
-  const [hero, ...rest] = posts;
-  const secondary = rest.slice(0, 2);
   const loanPrograms = LANDING_PAGES.filter((p) => p.kind === "loan");
 
   return (
-    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <>
       <JsonLd data={websiteJsonLd()} />
-      <h1 className="sr-only">
-        Russell D Smith — mortgage guides and loan insights
-      </h1>
+      <HomeHero />
 
-      {/* Lead story + secondary cards */}
-      <section className="border-b border-line py-10 sm:py-14">
-        <HeroFeature post={hero} />
-        {secondary.length ? (
-          <div className="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            {secondary.map((post) => (
-              <ArticleCard key={post.slug} post={post} />
+      {/* Loan-program band */}
+      <section className="bg-accent-pale">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+          <h2 className="font-serif text-2xl font-medium text-accent">Explore loan programs</h2>
+          <ul className="mt-5 flex flex-wrap gap-2.5">
+            {loanPrograms.map((p) => (
+              <li key={p.slug}>
+                <Link
+                  href={`/${p.slug}/`}
+                  className="inline-flex rounded-full border border-accent/20 bg-white px-4 py-1.5 text-sm font-medium text-accent transition-colors hover:bg-accent hover:text-white"
+                >
+                  {p.title}
+                </Link>
+              </li>
             ))}
-          </div>
-        ) : null}
+          </ul>
+        </div>
       </section>
 
-      {/* Loan-program quick links (internal links to high-authority pages) */}
-      <nav aria-label="Loan programs" className="border-b border-line py-6">
-        <ul className="flex flex-wrap gap-2.5">
-          {loanPrograms.map((p) => (
-            <li key={p.slug}>
-              <Link
-                href={`/${p.slug}/`}
-                className="inline-flex rounded-full border border-line-strong px-4 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:border-accent hover:text-accent"
-              >
-                {p.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      {/* Resources / blog */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="flex items-end justify-between border-b-2 border-accent pt-14 pb-3">
+          <h2 className="font-serif text-3xl font-medium text-accent sm:text-4xl">
+            Resources from Russell D Smith
+          </h2>
+          <Link
+            href="/blog/"
+            className="hidden shrink-0 rounded-md bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent-2-hover sm:inline-flex"
+          >
+            View Blog
+          </Link>
+        </div>
 
-      {/* Topic rails */}
-      <div className="space-y-16 py-14">
-        {HOME_RAILS.map((rail) => (
-          <SectionRail
-            key={rail.slug}
-            title={rail.title}
-            href={`/blog/category/${rail.slug}/`}
-            posts={getPostsByCategory(rail.slug).slice(0, 3)}
-          />
-        ))}
+        {posts.length ? (
+          <div className="space-y-16 py-14">
+            <div className="grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+              {posts.slice(0, 3).map((post) => (
+                <ArticleCard key={post.slug} post={post} priority />
+              ))}
+            </div>
 
-        <SectionRail title="Latest guides" href="/blog/" posts={posts.slice(0, 6)} />
+            {HOME_RAILS.map((rail) => (
+              <SectionRail
+                key={rail.slug}
+                title={rail.title}
+                href={`/blog/category/${rail.slug}/`}
+                posts={getPostsByCategory(rail.slug).slice(0, 3)}
+              />
+            ))}
 
-        <CtaBlock />
+            <SectionRail title="Latest guides" href="/blog/" posts={posts.slice(0, 6)} />
+
+            <CtaBlock />
+          </div>
+        ) : (
+          <p className="py-16 text-muted">Guides are being migrated. Check back shortly.</p>
+        )}
       </div>
-    </div>
+    </>
   );
 }

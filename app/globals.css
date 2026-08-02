@@ -1,31 +1,61 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/* Design tokens — editorial / news-magazine, "cleaner than CNN".      */
-/* Warm-paper canvas, warm near-black ink, one confident navy accent,  */
-/* a brighter blue tint for links/CTAs. Refined further in the design  */
-/* system (Phase 3).                                                   */
+/* Brand fonts pulled from the old teammovemortgage.com site: Futura PT */
+/* (geometric display) for headings + wordmark. Body stays Segoe UI.   */
+/* ------------------------------------------------------------------ */
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/FuturaPT-Book.woff2") format("woff2"),
+    url("/fonts/FuturaPT-Book.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/FuturaPT-Medium.woff2") format("woff2"),
+    url("/fonts/FuturaPT-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Futura PT";
+  src: url("/fonts/FuturaPT-Demi.woff2") format("woff2"),
+    url("/fonts/FuturaPT-Demi.woff") format("woff");
+  font-weight: 600 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ------------------------------------------------------------------ */
+/* Design tokens — old-site branding: deep navy + light blue, clean     */
+/* white canvas. Kept as Russell D Smith.                               */
 /* ------------------------------------------------------------------ */
 :root {
-  --canvas: #faf8f5; /* warm paper */
+  --canvas: #ffffff;
   --surface: #ffffff;
-  --ink: #1c1a17; /* warm near-black */
-  --ink-soft: #3c372f;
-  --muted: #6b6560; /* meta / secondary text */
-  --line: #e8e2d9; /* hairline borders */
-  --line-strong: #d9d2c6;
-  --accent: #16345d; /* deep navy — brand, eyebrows */
-  --accent-2: #1d5fb0; /* brighter blue — links, CTAs */
-  --accent-2-hover: #17497f;
+  --ink: #1c2434; /* dark navy-slate ink */
+  --ink-soft: #3a4356;
+  --muted: #626b7a; /* meta / secondary text */
+  --line: #e3e8f0; /* cool hairline borders */
+  --line-strong: #ccd5e2;
+  --accent: #1a2f80; /* brand navy (from old site #1a2f80) */
+  --accent-deep: #14245f; /* darker navy */
+  --accent-2: #1a2f80; /* links / CTAs — navy */
+  --accent-2-hover: #263a86;
+  --accent-light: #c5dfe0; /* light blue — headings on navy, accents */
+  --accent-pale: #e7f0f0; /* pale blue section backgrounds */
   --accent-contrast: #ffffff;
 }
 
 @theme inline {
-  /* Site-wide font: Segoe UI (system font) for both body and headings. */
+  /* Body/UI stays Segoe UI (per earlier preference); headings use Futura. */
   --font-sans: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  --font-serif: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Futura PT", "Futura", "Century Gothic", "Segoe UI", system-ui,
+    sans-serif;
 
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
@@ -35,8 +65,11 @@
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
   --color-accent-2: var(--accent-2);
   --color-accent-2-hover: var(--accent-2-hover);
+  --color-accent-light: var(--accent-light);
+  --color-accent-pale: var(--accent-pale);
   --color-accent-contrast: var(--accent-contrast);
 }
 

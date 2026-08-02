@@ -17,10 +17,10 @@ export function SectionRail({
   if (!posts.length) return null;
   return (
     <section>
-      <div className="flex items-baseline justify-between border-b border-line pb-2.5">
-        <h2 className="font-serif text-xl font-semibold text-ink">
+      <div className="flex items-baseline justify-between border-b-2 border-accent/15 pb-2.5">
+        <h2 className="font-serif text-2xl font-medium text-accent">
           {href ? (
-            <Link href={href} className="hover:text-accent">
+            <Link href={href} className="hover:text-accent-2-hover">
               {title}
             </Link>
           ) : (

@@ -8,13 +8,11 @@ export function Wordmark({ className }: { className?: string }) {
       href="/"
       aria-label={`${SITE.name} — home`}
       className={cn(
-        "inline-flex items-baseline font-serif text-[1.35rem] leading-none font-semibold tracking-tight text-ink",
+        "inline-flex items-center font-serif text-xl leading-none font-semibold tracking-[0.04em] whitespace-nowrap text-accent uppercase",
         className,
       )}
     >
-      <span>Russell</span>
-      <span className="mx-1 text-accent">D</span>
-      <span>Smith</span>
+      Russell&nbsp;D&nbsp;Smith
     </Link>
   );
 }
