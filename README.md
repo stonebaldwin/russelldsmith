@@ -12,7 +12,8 @@ SEO preserved through a full per-URL 301 redirect layer.
 ## Stack
 
 - **Next.js 16** (App Router, RSC, TypeScript) + **Tailwind CSS v4**
-- **MDX content** in `content/blog/{slug}.mdx` (`gray-matter` + `next-mdx-remote`)
+- **MDX content** in `content/blog/{slug}.mdx` (`gray-matter` frontmatter; bodies
+  rendered as GFM Markdown via `react-markdown` + `rehype-raw`)
 - **Cloudflare Workers** via **`@opennextjs/cloudflare`** + **Wrangler**
 - Fonts: Newsreader (serif headlines) + Inter (body/UI)
 
