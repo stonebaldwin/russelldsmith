@@ -1,0 +1,537 @@
+{
+  "generatedAt": "2026-08-02T20:13:21.022Z",
+  "siteUrl": "https://russelldsmith.com",
+  "counts": {
+    "posts": 3,
+    "recovered": 0,
+    "categories": 10,
+    "tags": 49,
+    "landing": 11
+  },
+  "posts": [
+    {
+      "slug": "va-home-loan",
+      "url": "/blog/va-home-loan/",
+      "date": "2019-12-23",
+      "categories": [
+        "frequently-asked-questions",
+        "va-loans"
+      ],
+      "tags": [
+        "multiple-va-loans",
+        "va-builder-id",
+        "va-construction-loan",
+        "va-credit-score-requirements",
+        "va-home-loan",
+        "va-home-loan-occupancy-requirements",
+        "va-loan-acreage",
+        "va-loan-closing-costs",
+        "va-loan-faq",
+        "va-loan-limits-2020",
+        "va-loans",
+        "va-student-loan-requirements"
+      ],
+      "recovered": false,
+      "hero": true,
+      "source_url": "https://teammovemortgage.com/blog/va-home-loan/"
+    },
+    {
+      "slug": "fha-minimum-credit-score",
+      "url": "/blog/fha-minimum-credit-score/",
+      "date": "2014-10-10",
+      "categories": [
+        "fha",
+        "frequently-asked-questions",
+        "products"
+      ],
+      "tags": [
+        "credit-reports",
+        "credit-score-for-fha-loan",
+        "credit-scoring",
+        "fha",
+        "fha-credit-score",
+        "fha-credit-score-requirements-2017",
+        "fha-guidelines",
+        "fha-home-loans",
+        "fha-loan-calculator",
+        "fha-loan-credit-score",
+        "fha-loan-requirements",
+        "fha-loans",
+        "fha-purchase",
+        "fha-rates",
+        "first-time-buyers",
+        "homebuyers",
+        "low-down-payment",
+        "minimum-credit-score-for-fha",
+        "minimum-credit-score-for-fha-loan",
+        "mortgage-credit-score",
+        "mortgage-faqs"
+      ],
+      "recovered": false,
+      "hero": true,
+      "source_url": "https://teammovemortgage.com/blog/fha-minimum-credit-score/"
+    },
+    {
+      "slug": "usda-loans-myrtle-beach",
+      "url": "/blog/usda-loans-myrtle-beach/",
+      "date": "2014-08-03",
+      "categories": [
+        "1st-time-buyers",
+        "frequently-asked-questions",
+        "local-resources-best-places-to-live-in-nc-and-sc-including-subdivisions-schools-things-to-do",
+        "market-updates",
+        "recent-changes",
+        "tips",
+        "usda"
+      ],
+      "tags": [
+        "conway",
+        "first-time-buyers",
+        "homebuyers",
+        "horry-county",
+        "how-to-search-for-usda-eligible-properties",
+        "loris",
+        "mortgage-faqs",
+        "myrtle-beach",
+        "north-myrtle-beach",
+        "realtors",
+        "team-move",
+        "usda",
+        "usda-home-loan-updates",
+        "usda-home-loans",
+        "usda-loans",
+        "usda-loans-myrtle-beach",
+        "usda-loans-sc",
+        "usda-rural-development",
+        "usda-rural-development-guidelines"
+      ],
+      "recovered": false,
+      "hero": true,
+      "source_url": "https://teammovemortgage.com/blog/usda-loans-myrtle-beach/"
+    }
+  ],
+  "categories": [
+    {
+      "slug": "frequently-asked-questions",
+      "url": "/blog/category/frequently-asked-questions/",
+      "count": 3
+    },
+    {
+      "slug": "1st-time-buyers",
+      "url": "/blog/category/1st-time-buyers/",
+      "count": 1
+    },
+    {
+      "slug": "fha",
+      "url": "/blog/category/fha/",
+      "count": 1
+    },
+    {
+      "slug": "local-resources-best-places-to-live-in-nc-and-sc-including-subdivisions-schools-things-to-do",
+      "url": "/blog/category/local-resources-best-places-to-live-in-nc-and-sc-including-subdivisions-schools-things-to-do/",
+      "count": 1
+    },
+    {
+      "slug": "market-updates",
+      "url": "/blog/category/market-updates/",
+      "count": 1
+    },
+    {
+      "slug": "products",
+      "url": "/blog/category/products/",
+      "count": 1
+    },
+    {
+      "slug": "recent-changes",
+      "url": "/blog/category/recent-changes/",
+      "count": 1
+    },
+    {
+      "slug": "tips",
+      "url": "/blog/category/tips/",
+      "count": 1
+    },
+    {
+      "slug": "usda",
+      "url": "/blog/category/usda/",
+      "count": 1
+    },
+    {
+      "slug": "va-loans",
+      "url": "/blog/category/va-loans/",
+      "count": 1
+    }
+  ],
+  "tags": [
+    {
+      "slug": "first-time-buyers",
+      "url": "/blog/tag/first-time-buyers/",
+      "count": 2
+    },
+    {
+      "slug": "homebuyers",
+      "url": "/blog/tag/homebuyers/",
+      "count": 2
+    },
+    {
+      "slug": "mortgage-faqs",
+      "url": "/blog/tag/mortgage-faqs/",
+      "count": 2
+    },
+    {
+      "slug": "conway",
+      "url": "/blog/tag/conway/",
+      "count": 1
+    },
+    {
+      "slug": "credit-reports",
+      "url": "/blog/tag/credit-reports/",
+      "count": 1
+    },
+    {
+      "slug": "credit-score-for-fha-loan",
+      "url": "/blog/tag/credit-score-for-fha-loan/",
+      "count": 1
+    },
+    {
+      "slug": "credit-scoring",
+      "url": "/blog/tag/credit-scoring/",
+      "count": 1
+    },
+    {
+      "slug": "fha",
+      "url": "/blog/tag/fha/",
+      "count": 1
+    },
+    {
+      "slug": "fha-credit-score",
+      "url": "/blog/tag/fha-credit-score/",
+      "count": 1
+    },
+    {
+      "slug": "fha-credit-score-requirements-2017",
+      "url": "/blog/tag/fha-credit-score-requirements-2017/",
+      "count": 1
+    },
+    {
+      "slug": "fha-guidelines",
+      "url": "/blog/tag/fha-guidelines/",
+      "count": 1
+    },
+    {
+      "slug": "fha-home-loans",
+      "url": "/blog/tag/fha-home-loans/",
+      "count": 1
+    },
+    {
+      "slug": "fha-loan-calculator",
+      "url": "/blog/tag/fha-loan-calculator/",
+      "count": 1
+    },
+    {
+      "slug": "fha-loan-credit-score",
+      "url": "/blog/tag/fha-loan-credit-score/",
+      "count": 1
+    },
+    {
+      "slug": "fha-loan-requirements",
+      "url": "/blog/tag/fha-loan-requirements/",
+      "count": 1
+    },
+    {
+      "slug": "fha-loans",
+      "url": "/blog/tag/fha-loans/",
+      "count": 1
+    },
+    {
+      "slug": "fha-purchase",
+      "url": "/blog/tag/fha-purchase/",
+      "count": 1
+    },
+    {
+      "slug": "fha-rates",
+      "url": "/blog/tag/fha-rates/",
+      "count": 1
+    },
+    {
+      "slug": "horry-county",
+      "url": "/blog/tag/horry-county/",
+      "count": 1
+    },
+    {
+      "slug": "how-to-search-for-usda-eligible-properties",
+      "url": "/blog/tag/how-to-search-for-usda-eligible-properties/",
+      "count": 1
+    },
+    {
+      "slug": "loris",
+      "url": "/blog/tag/loris/",
+      "count": 1
+    },
+    {
+      "slug": "low-down-payment",
+      "url": "/blog/tag/low-down-payment/",
+      "count": 1
+    },
+    {
+      "slug": "minimum-credit-score-for-fha",
+      "url": "/blog/tag/minimum-credit-score-for-fha/",
+      "count": 1
+    },
+    {
+      "slug": "minimum-credit-score-for-fha-loan",
+      "url": "/blog/tag/minimum-credit-score-for-fha-loan/",
+      "count": 1
+    },
+    {
+      "slug": "mortgage-credit-score",
+      "url": "/blog/tag/mortgage-credit-score/",
+      "count": 1
+    },
+    {
+      "slug": "multiple-va-loans",
+      "url": "/blog/tag/multiple-va-loans/",
+      "count": 1
+    },
+    {
+      "slug": "myrtle-beach",
+      "url": "/blog/tag/myrtle-beach/",
+      "count": 1
+    },
+    {
+      "slug": "north-myrtle-beach",
+      "url": "/blog/tag/north-myrtle-beach/",
+      "count": 1
+    },
+    {
+      "slug": "realtors",
+      "url": "/blog/tag/realtors/",
+      "count": 1
+    },
+    {
+      "slug": "team-move",
+      "url": "/blog/tag/team-move/",
+      "count": 1
+    },
+    {
+      "slug": "usda",
+      "url": "/blog/tag/usda/",
+      "count": 1
+    },
+    {
+      "slug": "usda-home-loan-updates",
+      "url": "/blog/tag/usda-home-loan-updates/",
+      "count": 1
+    },
+    {
+      "slug": "usda-home-loans",
+      "url": "/blog/tag/usda-home-loans/",
+      "count": 1
+    },
+    {
+      "slug": "usda-loans",
+      "url": "/blog/tag/usda-loans/",
+      "count": 1
+    },
+    {
+      "slug": "usda-loans-myrtle-beach",
+      "url": "/blog/tag/usda-loans-myrtle-beach/",
+      "count": 1
+    },
+    {
+      "slug": "usda-loans-sc",
+      "url": "/blog/tag/usda-loans-sc/",
+      "count": 1
+    },
+    {
+      "slug": "usda-rural-development",
+      "url": "/blog/tag/usda-rural-development/",
+      "count": 1
+    },
+    {
+      "slug": "usda-rural-development-guidelines",
+      "url": "/blog/tag/usda-rural-development-guidelines/",
+      "count": 1
+    },
+    {
+      "slug": "va-builder-id",
+      "url": "/blog/tag/va-builder-id/",
+      "count": 1
+    },
+    {
+      "slug": "va-construction-loan",
+      "url": "/blog/tag/va-construction-loan/",
+      "count": 1
+    },
+    {
+      "slug": "va-credit-score-requirements",
+      "url": "/blog/tag/va-credit-score-requirements/",
+      "count": 1
+    },
+    {
+      "slug": "va-home-loan",
+      "url": "/blog/tag/va-home-loan/",
+      "count": 1
+    },
+    {
+      "slug": "va-home-loan-occupancy-requirements",
+      "url": "/blog/tag/va-home-loan-occupancy-requirements/",
+      "count": 1
+    },
+    {
+      "slug": "va-loan-acreage",
+      "url": "/blog/tag/va-loan-acreage/",
+      "count": 1
+    },
+    {
+      "slug": "va-loan-closing-costs",
+      "url": "/blog/tag/va-loan-closing-costs/",
+      "count": 1
+    },
+    {
+      "slug": "va-loan-faq",
+      "url": "/blog/tag/va-loan-faq/",
+      "count": 1
+    },
+    {
+      "slug": "va-loan-limits-2020",
+      "url": "/blog/tag/va-loan-limits-2020/",
+      "count": 1
+    },
+    {
+      "slug": "va-loans",
+      "url": "/blog/tag/va-loans/",
+      "count": 1
+    },
+    {
+      "slug": "va-student-loan-requirements",
+      "url": "/blog/tag/va-student-loan-requirements/",
+      "count": 1
+    }
+  ],
+  "landing": [
+    {
+      "slug": "va-loans",
+      "url": "/va-loans/"
+    },
+    {
+      "slug": "usda-loans",
+      "url": "/usda-loans/"
+    },
+    {
+      "slug": "fha-loans",
+      "url": "/fha-loans/"
+    },
+    {
+      "slug": "renovation-loans",
+      "url": "/renovation-loans/"
+    },
+    {
+      "slug": "construction-perm",
+      "url": "/construction-perm/"
+    },
+    {
+      "slug": "down-payment-assistance",
+      "url": "/down-payment-assistance/"
+    },
+    {
+      "slug": "reverse-mortgages",
+      "url": "/reverse-mortgages/"
+    },
+    {
+      "slug": "jumbo-loans",
+      "url": "/jumbo-loans/"
+    },
+    {
+      "slug": "investment-property-loans",
+      "url": "/investment-property-loans/"
+    },
+    {
+      "slug": "mortgage-calculators",
+      "url": "/mortgage-calculators/"
+    },
+    {
+      "slug": "va-funding-fee-tables",
+      "url": "/va-funding-fee-tables/"
+    }
+  ],
+  "allPaths": [
+    "/",
+    "/about/",
+    "/blog/",
+    "/blog/category/1st-time-buyers/",
+    "/blog/category/fha/",
+    "/blog/category/frequently-asked-questions/",
+    "/blog/category/local-resources-best-places-to-live-in-nc-and-sc-including-subdivisions-schools-things-to-do/",
+    "/blog/category/market-updates/",
+    "/blog/category/products/",
+    "/blog/category/recent-changes/",
+    "/blog/category/tips/",
+    "/blog/category/usda/",
+    "/blog/category/va-loans/",
+    "/blog/fha-minimum-credit-score/",
+    "/blog/tag/conway/",
+    "/blog/tag/credit-reports/",
+    "/blog/tag/credit-score-for-fha-loan/",
+    "/blog/tag/credit-scoring/",
+    "/blog/tag/fha-credit-score-requirements-2017/",
+    "/blog/tag/fha-credit-score/",
+    "/blog/tag/fha-guidelines/",
+    "/blog/tag/fha-home-loans/",
+    "/blog/tag/fha-loan-calculator/",
+    "/blog/tag/fha-loan-credit-score/",
+    "/blog/tag/fha-loan-requirements/",
+    "/blog/tag/fha-loans/",
+    "/blog/tag/fha-purchase/",
+    "/blog/tag/fha-rates/",
+    "/blog/tag/fha/",
+    "/blog/tag/first-time-buyers/",
+    "/blog/tag/homebuyers/",
+    "/blog/tag/horry-county/",
+    "/blog/tag/how-to-search-for-usda-eligible-properties/",
+    "/blog/tag/loris/",
+    "/blog/tag/low-down-payment/",
+    "/blog/tag/minimum-credit-score-for-fha-loan/",
+    "/blog/tag/minimum-credit-score-for-fha/",
+    "/blog/tag/mortgage-credit-score/",
+    "/blog/tag/mortgage-faqs/",
+    "/blog/tag/multiple-va-loans/",
+    "/blog/tag/myrtle-beach/",
+    "/blog/tag/north-myrtle-beach/",
+    "/blog/tag/realtors/",
+    "/blog/tag/team-move/",
+    "/blog/tag/usda-home-loan-updates/",
+    "/blog/tag/usda-home-loans/",
+    "/blog/tag/usda-loans-myrtle-beach/",
+    "/blog/tag/usda-loans-sc/",
+    "/blog/tag/usda-loans/",
+    "/blog/tag/usda-rural-development-guidelines/",
+    "/blog/tag/usda-rural-development/",
+    "/blog/tag/usda/",
+    "/blog/tag/va-builder-id/",
+    "/blog/tag/va-construction-loan/",
+    "/blog/tag/va-credit-score-requirements/",
+    "/blog/tag/va-home-loan-occupancy-requirements/",
+    "/blog/tag/va-home-loan/",
+    "/blog/tag/va-loan-acreage/",
+    "/blog/tag/va-loan-closing-costs/",
+    "/blog/tag/va-loan-faq/",
+    "/blog/tag/va-loan-limits-2020/",
+    "/blog/tag/va-loans/",
+    "/blog/tag/va-student-loan-requirements/",
+    "/blog/usda-loans-myrtle-beach/",
+    "/blog/va-home-loan/",
+    "/construction-perm/",
+    "/contact/",
+    "/down-payment-assistance/",
+    "/fha-loans/",
+    "/investment-property-loans/",
+    "/jumbo-loans/",
+    "/mortgage-calculators/",
+    "/renovation-loans/",
+    "/reverse-mortgages/",
+    "/usda-loans/",
+    "/va-funding-fee-tables/",
+    "/va-loans/"
+  ]
+}
