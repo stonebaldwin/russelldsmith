@@ -1,0 +1,76 @@
+legacy_path,referring_domains,current_status,destination_path,match_method,action,notes
+/2015/05/22/when-does-pmi-stop-on-fha-usda-and-conventional-mortgage-loans/,284,301->404,/blog/when-does-pmi-stop-on-fha-usda-and-conventional-mortgage-loans/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/construction-perm/,158,301,/construction-perm/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/usda/,134,301,/usda-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/06/29/usda-eligibility/,118,301->404,/blog/usda-eligibility/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2015/02/28/va-fha-usda-manufactured-home-doublewides-foundation-rules-requirements/,109,301->404,/blog/va-fha-usda-manufactured-home-doublewides-foundation-rules-requirements/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/fha/,105,301,/fha-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/02/07/gift-of-equity-family/,100,301->404,/blog/gift-of-equity-family/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/va-loan/,88,301,/va-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/09/14/rental-property/,87,301->404,/blog/rental-property/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2017/05/05/fannie-mae-student-loans/,85,301->404,/blog/fannie-mae-student-loans/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2014/09/21/seller-paid-costs-limits/,84,301->404,/blog/seller-paid-costs-limits/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2016/04/30/2016-2017-usda-funding-fee/,84,301,/blog/2016-2017-usda-funding-fee/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/2016/04/08/tax-return-issues-that-can-cause-delays-or-denials-when-buying-a-home/,82,301,/blog/tax-return-issues-that-can-cause-delays-or-denials-when-buying-a-home/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/down-payment-assistance-nc-sc/,68,301->404,/down-payment-assistance/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/mortgage-calculators/,68,301,/mortgage-calculators/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/va-funding-fee-tables/,68,301->404,/va-funding-fee-tables/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/06/22/down-payment-assistance-sc/,61,301,/blog/down-payment-assistance-sc/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/rehab-loans/,58,301,/renovation-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/11/29/conforming-loan-limits-2018/,44,301,/blog/conforming-loan-limits-2018/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/rental-properties/,40,301,/investment-property-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/06/12/fannie-mae-loosens-guidelines/,39,301,/blog/fannie-mae-loosens-guidelines/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/down-payment-assistance.php,35,301->home,/down-payment-assistance/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/va-loans.php,31,301->home,/va-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/12/22/capital-gains-tax/,29,301,/blog/capital-gains-tax/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/blog/2020/02/17/va-seller-paid-closing-costs/,29,301->doubleblog,/blog/va-seller-paid-closing-costs/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/2014/10/10/fha-minimum-credit-score/,27,301,/blog/fha-minimum-credit-score/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/2015/06/16/cash-deposits-mortgages/,27,301,/blog/cash-deposits-mortgages/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2017/06/09/mortgage-credit-score/,27,301,/blog/mortgage-credit-score/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/usda-loans.php,25,301->home,/usda-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/blog/2020/02/16/va-loan-manufactured-home/,23,301->doubleblog,/blog/va-loan-manufactured-home/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/contact-us/,23,301,/contact/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/11/01/ets-date/,22,301,/blog/ets-date/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/vacation-home-purchase/,22,301,/blog/second-home/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/1st-time-buyer-mcc-tax-credit-nc/,21,301,/blog/mortgage-credit-certificate/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2017/07/05/first-time-home-buyer-loan/,18,301,/blog/first-time-home-buyer-loan/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2017/01/21/home-purchase-student-loans-ibr/,17,301,/blog/home-purchase-student-loans-ibr/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2017/11/01/va-manual-underwriting/,17,301,/blog/va-manual-underwriting/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/blog/2019/09/26/fha-guidelines/,17,301->doubleblog,/blog/fha-guidelines/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/2017/07/06/first-time-home-buyer/,12,301,/blog/first-time-home-buyer/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/blog/2015/09/05/va-builder-id/,12,301->doubleblog,/blog/va-builder-id/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2016/12/02/top-12-va-appraisal-issues/,12,301->doubleblog,/blog/top-12-va-appraisal-issues/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/category/1st-time-buyers/,12,301,/blog/category/1st-time-buyers/,rule:category-root,redirect,Category/tag archive; recreate the archive route so the redirect resolves.
+/2015/05/23/deferred-student-loans-payments/,11,301,/blog/deferred-student-loans-payments/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/jumbo-loans.php,11,301->home,/jumbo-loans/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/lot-loans.php,11,301->home,/construction-perm/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2015/07/25/mortgage-approval-credit-requirements/,10,301,/blog/mortgage-approval-credit-requirements/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/2016/10/16/credit-mistakes-avoid-prior-closing/,10,301->404,/blog/credit-mistakes-avoid-prior-closing/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/blog/2017/08/01/tidewater-initiative-process/,10,301->doubleblog,/blog/tidewater-initiative-process/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2019/10/25/usda-eligibility-map/,10,301->doubleblog,/blog/usda-eligibility-map/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/category/tips/,10,301,/blog/category/tips/,rule:category-root,redirect,Category/tag archive; recreate the archive route so the redirect resolves.
+/category/va-loans/,10,301,/blog/category/va-loans/,rule:category-root,redirect,Category/tag archive; recreate the archive route so the redirect resolves.
+/2015/07/01/non-taxable-income/,10,301->404,/blog/non-taxable-income/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/2014/08/03/usda-loans-myrtle-beach/,9,301,/blog/usda-loans-myrtle-beach/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/2015/10/12/closing-costs-home-purchase/,9,301,/blog/closing-costs-home-purchase/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2017/04/25/fsbo/,9,301,/blog/fsbo/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/blog/2015/05/12/pest-inspection-va-requirements/,9,301->doubleblog,/blog/pest-inspection-va-requirements/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2015/05/23/appraisal-requirements-tips/,9,301->doubleblog,/blog/appraisal-requirements-tips/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2015/09/05/va-refinance-irrrl/,9,301->doubleblog,/blog/va-refinance-irrrl/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2017/11/01/va-manual-underwriting/,9,301->doubleblog,/blog/va-manual-underwriting/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2020/01/12/how-to-buy-a-house/,9,301->doubleblog,/blog/how-to-buy-a-house/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/2017/02/02/student-loan-debt-va-loans/,9,301->404,/blog/student-loan-debt-va-loans/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2014/10/28/myrtle-beach-condos/,8,301,/blog/myrtle-beach-condos/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/2015/06/28/usda-announces-funding-fee-changes-effective-1012015/,8,301,/blog/usda-announces-funding-fee-changes-effective-1012015/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2015/12/01/watch-out-for-the-holidays-and-what-they-can-do-to-your-credit-scores/,8,301,/blog/watch-out-for-the-holidays-and-what-they-can-do-to-your-credit-scores/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2017/06/15/va-cash-out-refinance/,8,301,/blog/va-cash-out-refinance/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2017/11/14/sell-your-house/,8,301,/blog/sell-your-house/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.
+/blog/2016/04/16/how-to-exceed-the-usda-household-income-limits/,8,301->doubleblog,/blog/how-to-exceed-the-usda-household-income-limits/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2018/10/23/fha-pmi/,8,301->doubleblog,/blog/fha-pmi/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2019/11/16/debt-service-coverage-ratio/,8,301->doubleblog,/blog/debt-service-coverage-ratio/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/blog/2020/02/09/horse-farm/,8,301->doubleblog,/blog/horse-farm/,rule:strip-date-gen2,redirect,Live post exists; date-strip rule resolves.
+/category/fha/,8,301,/blog/category/fha/,rule:category-root,redirect,Category/tag archive; recreate the archive route so the redirect resolves.
+/reverse-mortgages-nc-sc/,8,301,/reverse-mortgages/,explicit,redirect,Root/landing/utility page -> mapped destination (build this page).
+/2015/05/22/what-is-pmi-insurance/,8,301->404,/blog/what-is-pmi-insurance/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2015/08/15/rent-tips-first-time-buyers/,7,301,/blog/rent-tips-first-time-buyers/,rule:strip-date-gen1,REBUILD+redirect,"No live post in Ahrefs data; confirm against scraped sitemap. If missing, recover from Wayback and rebuild at this slug so the redirect resolves."
+/2015/07/19/real-estate-closing-checklist/,7,301->404,/blog/real-estate-closing-checklist/,rule:strip-date-gen1,redirect,Live post exists; date-strip rule resolves.

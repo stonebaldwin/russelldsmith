@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // Site Worker for russelldsmith.com (the Next.js app via @opennextjs/cloudflare).
+  // The redirect-only Worker for teammovemortgage.com is a SEPARATE project — see /workers/redirect.
+  "name": "russelldsmith",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "russelldsmith"
+    }
+  ],
+  "images": {
+    "binding": "IMAGES"
+  }
+  // After DNS is on Cloudflare, bind the production hostname:
+  // "routes": [{ "pattern": "russelldsmith.com/*", "zone_name": "russelldsmith.com" }]
+}
