@@ -118,6 +118,9 @@ export const LANDING_SLUGS = LANDING_PAGES.map((p) => p.slug);
 /** Core (non-landing, non-blog) routes that must exist. */
 export const CORE_ROUTES = ["/", "/blog/", "/about/", "/contact/"];
 
+/** Posts per page on the /blog index. */
+export const POSTS_PER_PAGE = 24;
+
 /** Primary top nav (label + href). Keep tight and scannable. */
 export const PRIMARY_NAV: { label: string; href: string }[] = [
   { label: "VA Loans", href: "/va-loans/" },

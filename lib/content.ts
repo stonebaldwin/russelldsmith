@@ -182,6 +182,25 @@ export function getAllTags(): Term[] {
 export function getPostsByCategory(slug: string): Post[] {
   return getAllPosts().filter((p) => p.categories.includes(slug));
 }
+
+/**
+ * Posts matching any of the given terms (in slug/title/tags/categories).
+ * Used by landing pages to surface relevant guides. Optionally seed with a
+ * category slug that always matches.
+ */
+export function getPostsMatching(
+  terms: string[],
+  { category, limit = 6 }: { category?: string; limit?: number } = {},
+): Post[] {
+  const needles = terms.map((t) => t.toLowerCase()).filter(Boolean);
+  return getAllPosts()
+    .filter((p) => {
+      if (category && p.categories.includes(category)) return true;
+      const hay = `${p.slug} ${p.title} ${p.tags.join(" ")} ${p.categories.join(" ")}`.toLowerCase();
+      return needles.some((n) => hay.includes(n));
+    })
+    .slice(0, limit);
+}
 export function getPostsByTag(slug: string): Post[] {
   return getAllPosts().filter((p) => p.tags.includes(slug));
 }
