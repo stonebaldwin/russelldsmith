@@ -16,7 +16,6 @@ import {
 import { CORE_ROUTES, LANDING_PAGES } from "../../lib/routes.js";
 
 export interface Manifest {
-  generatedAt: string;
   siteUrl: string;
   counts: {
     posts: number;
@@ -42,7 +41,7 @@ export interface Manifest {
   allPaths: string[];
 }
 
-export function buildManifest(opts: { write?: boolean; generatedAt?: string } = {}): Manifest {
+export function buildManifest(opts: { write?: boolean } = {}): Manifest {
   const posts = getAllPosts();
   const categories = getAllCategories();
   const tags = getAllTags();
@@ -57,7 +56,6 @@ export function buildManifest(opts: { write?: boolean; generatedAt?: string } = 
   ).sort();
 
   const manifest: Manifest = {
-    generatedAt: opts.generatedAt ?? new Date().toISOString(),
     siteUrl: SITE_URL,
     counts: {
       posts: posts.length,
