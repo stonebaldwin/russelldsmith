@@ -165,6 +165,7 @@ async function main() {
 
   const taxonomy = { categories: {} as Record<string, string>, tags: {} as Record<string, string> };
   const processed: ProcessedRecord[] = [];
+  const failures: { slug: string; error: string }[] = [];
   const imgLimit = pLimit(CONCURRENCY);
 
   if (!DRY) fs.mkdirSync(CONTENT_DIR, { recursive: true });
@@ -174,6 +175,7 @@ async function main() {
     const flags = [...cls.flags];
     const postUrl = post.link || `${"https://teammovemortgage.com"}/blog/${slug}/`;
 
+    try {
     const { markdown, images, debrandCount, flags: convFlags } = htmlToMdx(post.contentHtml, {
       slug,
       postUrl,
@@ -260,6 +262,11 @@ async function main() {
     console.log(
       `[scrape]   ✓ ${slug}  (${categorySlugs.join(", ") || "—"})  ${debrandCount ? `debrand×${debrandCount} ` : ""}${flags.length ? `[${flags.join(", ")}]` : ""}`,
     );
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      failures.push({ slug, error: msg });
+      console.error(`[scrape]   ✗ ${slug}: ${msg}`);
+    }
   }
 
   if (!DRY) {
@@ -274,7 +281,13 @@ async function main() {
     );
   }
 
-  console.log(`\n[scrape] DONE. processed=${processed.length} dropped=${dropped.length}`);
+  if (failures.length) {
+    console.log(`[scrape] ${failures.length} posts FAILED to process:`);
+    for (const f of failures) console.log(`   - ${f.slug}: ${f.error}`);
+  }
+  console.log(
+    `\n[scrape] DONE. processed=${processed.length} dropped=${dropped.length} failed=${failures.length}`,
+  );
   const review = processed.filter((p) => p.flags.some((f) => f.startsWith("still-mentions-team-move") || f.startsWith("contains-phone") || f === "thin-content"));
   if (review.length) console.log(`[scrape] ${review.length} posts flagged for manual review (see docs/content-audit.md)`);
 }
