@@ -6,6 +6,7 @@ import { HomeHero } from "@/components/HomeHero";
 import { ArticleCard } from "@/components/ArticleCard";
 import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
+import { VideoSection } from "@/components/VideoSection";
 import { JsonLd } from "@/components/JsonLd";
 import { websiteJsonLd } from "@/lib/seo";
 
@@ -80,6 +81,8 @@ export default function Home() {
             ))}
 
             <SectionRail title="Latest guides" href="/blog/" posts={posts.slice(0, 6)} />
+
+            <VideoSection />
 
             <CtaBlock />
           </div>

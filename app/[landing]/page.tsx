@@ -7,6 +7,8 @@ import { CtaBlock } from "@/components/CtaBlock";
 import { ApplyLink } from "@/components/ApplyLink";
 import { MortgageCalculator } from "@/components/MortgageCalculator";
 import { VAFundingFeeTable } from "@/components/VAFundingFeeTable";
+import { LitePlaylist } from "@/components/LitePlaylist";
+import { getPlaylistForTopic } from "@/lib/youtube";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
@@ -63,6 +65,7 @@ export default async function LandingPage({
     category: page.category,
     limit: 6,
   });
+  const playlist = getPlaylistForTopic(page.slug);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -95,6 +98,17 @@ export default async function LandingPage({
         <div className="mt-10">
           <VAFundingFeeTable />
         </div>
+      ) : null}
+
+      {playlist ? (
+        <section className="mt-16">
+          <h2 className="border-b-2 border-accent/15 pb-2.5 font-serif text-2xl font-medium text-accent">
+            Watch: {page.title} on video
+          </h2>
+          <div className="mt-6 max-w-3xl">
+            <LitePlaylist playlist={playlist} />
+          </div>
+        </section>
       ) : null}
 
       {related.length ? (
