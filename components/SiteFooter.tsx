@@ -32,15 +32,26 @@ export function SiteFooter() {
                 {CONTACT.email}
               </a>
             </p>
-            <div className="mt-4 inline-flex items-center gap-3 rounded-lg bg-white px-3 py-2">
+            <div className="mt-5 flex items-center gap-5">
               {/* eslint-disable-next-line @next/next/no-img-element -- small local logo */}
               <img
                 src="/media/site/equal-housing-lender.png"
                 alt="Equal Housing Lender"
-                className="h-6 w-auto"
+                className="h-6 w-auto opacity-90 brightness-0 invert"
               />
-              {/* eslint-disable-next-line @next/next/no-img-element -- small local logo */}
-              <img src="/media/site/alcova-logo.png" alt={COMPLIANCE.company} className="h-5 w-auto" />
+              <a
+                href="https://alcova.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${COMPLIANCE.company} — alcova.com`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- small local logo */}
+                <img
+                  src="/media/site/alcova-logo.png"
+                  alt={COMPLIANCE.company}
+                  className="h-5 w-auto opacity-90 brightness-0 invert transition-opacity hover:opacity-100"
+                />
+              </a>
             </div>
           </div>
 
