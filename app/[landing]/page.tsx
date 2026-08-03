@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { LANDING_PAGES, LANDING_SLUGS } from "@/lib/routes";
 import { getPostsMatching } from "@/lib/content";
 import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
+import { ApplyLink } from "@/components/ApplyLink";
 import { MortgageCalculator } from "@/components/MortgageCalculator";
 import { VAFundingFeeTable } from "@/components/VAFundingFeeTable";
 import { JsonLd } from "@/components/JsonLd";
@@ -79,12 +79,9 @@ export default async function LandingPage({
         </h1>
         <p className="mt-4 text-lg leading-8 text-ink-soft">{page.description}</p>
         <div className="mt-6">
-          <Link
-            href="/contact/"
-            className="inline-flex rounded-md bg-accent-2 px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-2-hover"
-          >
+          <ApplyLink className="inline-flex rounded-md bg-accent-2 px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-2-hover">
             Get pre-qualified
-          </Link>
+          </ApplyLink>
         </div>
       </header>
 

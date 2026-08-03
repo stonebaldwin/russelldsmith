@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { LANDING_PAGES } from "@/lib/routes";
-import { SITE, COMPLIANCE } from "@/lib/site";
+import { SITE, AUTHOR, CONTACT, COMPLIANCE } from "@/lib/site";
 
 const GUIDE_LINKS = [
   { label: "All guides", href: "/blog/" },
@@ -11,21 +11,6 @@ const GUIDE_LINKS = [
   { label: "Tips", href: "/blog/category/tips/" },
 ];
 
-function EqualHousingMark() {
-  return (
-    <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true" className="text-ink">
-      <path
-        d="M12 3L3 10h2v9h14v-9h2L12 3z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-      />
-      <path d="M8.5 12.5h7M8.5 15h7" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-    </svg>
-  );
-}
-
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
@@ -33,8 +18,20 @@ export function SiteFooter() {
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <p className="font-serif text-lg font-semibold text-ink">{SITE.name}</p>
-            <p className="mt-2 max-w-xs text-sm leading-6 text-muted">{SITE.tagline}</p>
+            <p className="font-serif text-lg font-semibold text-accent">{SITE.name}</p>
+            <p className="mt-1 text-sm text-muted">
+              {AUTHOR.role} · Serving {AUTHOR.servingArea}
+            </p>
+            <p className="mt-3 text-sm">
+              <a href={CONTACT.phoneHref} className="text-ink-soft hover:text-accent">
+                {CONTACT.phone}
+              </a>
+            </p>
+            <p className="text-sm">
+              <a href={CONTACT.emailHref} className="break-words text-ink-soft hover:text-accent">
+                {CONTACT.email}
+              </a>
+            </p>
           </div>
 
           <nav aria-label="Loan programs">
@@ -73,31 +70,34 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        {/* Compliance block (required for a mortgage site). Placeholders are
-            filled in by Russell — see CLAUDE.md / lib/site.ts. */}
+        {/* Compliance block (required for a mortgage site). Data harvested from
+            ALCOVA's official disclosure — Russell to give a final review. */}
         <div className="mt-12 border-t border-line pt-8">
-          <div className="flex items-start gap-3">
-            <EqualHousingMark />
-            <p className="text-sm font-medium text-ink">{COMPLIANCE.equalHousing}</p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <div className="flex items-center gap-2">
+              {/* eslint-disable-next-line @next/next/no-img-element -- small local logo */}
+              <img
+                src="/media/site/equal-housing-lender.png"
+                alt="Equal Housing Lender"
+                className="h-7 w-auto"
+              />
+              <span className="text-sm font-medium text-ink">{COMPLIANCE.equalHousing}</span>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element -- small local logo */}
+            <img src="/media/site/alcova-logo.png" alt={COMPLIANCE.company} className="h-6 w-auto" />
           </div>
-          <dl className="mt-4 grid gap-x-8 gap-y-1 text-sm text-muted sm:grid-cols-2 lg:grid-cols-4">
-            <div className="flex gap-1.5">
-              <dt className="font-medium text-ink-soft">NMLS ID:</dt>
-              <dd>{COMPLIANCE.nmlsId}</dd>
-            </div>
-            <div className="flex gap-1.5">
-              <dt className="font-medium text-ink-soft">Company:</dt>
-              <dd>{COMPLIANCE.company}</dd>
-            </div>
-            <div className="flex gap-1.5">
-              <dt className="font-medium text-ink-soft">Company NMLS:</dt>
-              <dd>{COMPLIANCE.companyNmls}</dd>
-            </div>
-            <div className="flex gap-1.5">
-              <dt className="font-medium text-ink-soft">Licensed in:</dt>
-              <dd>{COMPLIANCE.licensedStates}</dd>
-            </div>
-          </dl>
+
+          <p className="mt-5 text-sm text-ink-soft">
+            {AUTHOR.name}, {AUTHOR.role} · NMLS #{COMPLIANCE.nmlsId}
+          </p>
+          <p className="mt-1 text-xs leading-5 text-muted">
+            {COMPLIANCE.company} · NMLS #{COMPLIANCE.companyNmls} · {COMPLIANCE.companyAddress} ·{" "}
+            {COMPLIANCE.companyPhone}
+          </p>
+          <p className="mt-1 text-xs leading-5 text-muted">
+            Licensed in {COMPLIANCE.licensedStates}. {COMPLIANCE.stateNotices}
+          </p>
+
           <p className="mt-5 max-w-4xl text-xs leading-5 text-muted">{COMPLIANCE.disclaimer}</p>
           <p className="mt-2 max-w-4xl text-xs leading-5 text-muted">{COMPLIANCE.privacy}</p>
           <p className="mt-6 text-xs text-muted">

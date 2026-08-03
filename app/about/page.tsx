@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AUTHOR, SITE } from "@/lib/site";
+import { AUTHOR } from "@/lib/site";
 import { CtaBlock } from "@/components/CtaBlock";
 import { JsonLd } from "@/components/JsonLd";
 import { personJsonLd } from "@/lib/seo";
@@ -15,15 +15,18 @@ export default function AboutPage() {
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
       <JsonLd data={personJsonLd()} />
       <div className="flex items-center gap-4">
-        <span
-          aria-hidden="true"
-          className="flex h-16 w-16 items-center justify-center rounded-full bg-accent font-serif text-lg font-semibold text-white"
-        >
-          {SITE.shortName}
-        </span>
+        {/* eslint-disable-next-line @next/next/no-img-element -- local headshot */}
+        <img
+          src={AUTHOR.photo}
+          alt={AUTHOR.name}
+          className="h-20 w-20 shrink-0 rounded-full border border-line object-cover"
+        />
         <div>
           <h1 className="font-serif text-3xl font-semibold tracking-tight text-ink">{AUTHOR.name}</h1>
-          <p className="text-muted">{AUTHOR.role}</p>
+          <p className="text-muted">
+            {AUTHOR.role} · NMLS #{AUTHOR.nmls}
+          </p>
+          <p className="text-sm text-muted">Serving {AUTHOR.servingArea}</p>
         </div>
       </div>
 

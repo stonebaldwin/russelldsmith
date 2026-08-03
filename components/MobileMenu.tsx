@@ -41,13 +41,15 @@ export function MobileMenu() {
                 {item.label}
               </Link>
             ))}
-            <Link
+            <a
               href={CTA.href}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setOpen(false)}
               className="mt-2 rounded-md bg-accent-2 px-3 py-2.5 text-center text-base font-semibold text-white hover:bg-accent-2-hover"
             >
               {CTA.label}
-            </Link>
+            </a>
           </nav>
         </div>
       )}

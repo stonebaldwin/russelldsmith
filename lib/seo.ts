@@ -1,6 +1,6 @@
 import type { Post } from "./content";
 import { SITE_URL, categoryLabel } from "./content";
-import { SITE, AUTHOR } from "./site";
+import { SITE, AUTHOR, CONTACT, SOCIAL, COMPLIANCE } from "./site";
 
 export function absoluteUrl(path: string): string {
   if (/^https?:\/\//i.test(path)) return path;
@@ -58,8 +58,18 @@ export function personJsonLd() {
     name: AUTHOR.name,
     jobTitle: AUTHOR.role,
     description: AUTHOR.bio,
+    image: absoluteUrl(AUTHOR.photo),
     url: absoluteUrl("/about/"),
-    worksFor: { "@type": "Organization", name: SITE.name, url: SITE_URL },
+    telephone: CONTACT.phone,
+    email: CONTACT.email,
+    identifier: `NMLS #${AUTHOR.nmls}`,
+    areaServed: AUTHOR.servingArea,
+    sameAs: [SOCIAL.facebook, SOCIAL.youtube],
+    worksFor: {
+      "@type": "Organization",
+      name: COMPLIANCE.company,
+      url: "https://alcova.com",
+    },
   };
 }
 

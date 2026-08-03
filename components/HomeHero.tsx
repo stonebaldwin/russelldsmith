@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CTA } from "@/lib/site";
+import { ApplyLink } from "./ApplyLink";
 
 /**
  * Homepage hero — modeled closely on the old teammovemortgage.com hero:
@@ -25,12 +26,9 @@ export function HomeHero() {
           &mdash; Russell D Smith &mdash;
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <Link
-            href={CTA.href}
-            className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent-light"
-          >
+          <ApplyLink className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent-light">
             {CTA.label}
-          </Link>
+          </ApplyLink>
           <Link
             href="/blog/"
             className="rounded-md border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"

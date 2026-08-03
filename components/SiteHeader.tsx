@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Wordmark } from "./Wordmark";
 import { MobileMenu } from "./MobileMenu";
+import { ApplyLink } from "./ApplyLink";
 import { PRIMARY_NAV } from "@/lib/routes";
 import { CTA } from "@/lib/site";
 
@@ -21,12 +22,9 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1.5 lg:ml-6">
-          <Link
-            href={CTA.href}
-            className="hidden rounded-md bg-accent-2 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-2-hover sm:inline-flex"
-          >
+          <ApplyLink className="hidden rounded-md bg-accent-2 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-2-hover sm:inline-flex">
             {CTA.label}
-          </Link>
+          </ApplyLink>
           <MobileMenu />
         </div>
       </div>

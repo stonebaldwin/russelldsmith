@@ -7,12 +7,18 @@ export function Wordmark({ className }: { className?: string }) {
     <Link
       href="/"
       aria-label={`${SITE.name} — home`}
-      className={cn(
-        "inline-flex items-center font-serif text-xl leading-none font-semibold tracking-[0.04em] whitespace-nowrap text-accent uppercase",
-        className,
-      )}
+      className={cn("inline-flex items-center gap-2.5", className)}
     >
-      Russell&nbsp;D&nbsp;Smith
+      {/* eslint-disable-next-line @next/next/no-img-element -- small local brand logo */}
+      <img
+        src="/media/site/alcova-logo.png"
+        alt="ALCOVA Mortgage"
+        className="h-6 w-auto sm:h-7"
+      />
+      <span className="hidden h-6 w-px bg-line-strong sm:block" aria-hidden="true" />
+      <span className="hidden font-serif text-base leading-none font-semibold tracking-[0.04em] whitespace-nowrap text-accent uppercase sm:inline lg:text-lg">
+        Russell D Smith
+      </span>
     </Link>
   );
 }

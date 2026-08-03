@@ -28,8 +28,11 @@ Google). Everything else is built and verified in the repo.
 - [x] Sitemap (`/sitemap.xml`), `robots.txt`, self-referencing canonicals,
   JSON-LD (Article, Breadcrumb, Person, WebSite).
 - [x] Compliance footer present (with placeholders).
-- [ ] **[you]** Fill compliance + contact placeholders (`lib/site.ts`,
-  `app/contact/page.tsx`), then `npm run build`.
+- [x] Compliance + contact details filled from Russell's ALCOVA loan-officer
+  profile — NMLS #78989, ALCOVA Mortgage, LLC (NMLS #40508), (910) 352-6344,
+  rsmith@alcova.com, HomeHub application, licensed-states + GA/NJ notices, and
+  his headshot (`lib/site.ts`). **[you]** Give the compliance block a final
+  legal review before launch.
 - [ ] **[you]** Manually spot-check the top ~20 reclamation URLs after deploy
   (see §2 of `docs/redirect-map.csv`, sorted by referring domains): each old URL
   should `301 → 200` and land on-topic.
