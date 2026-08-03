@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { searchDocs, type SearchDoc } from "@/lib/search";
@@ -9,7 +9,7 @@ export function SearchResults() {
   const params = useSearchParams();
   const q = params.get("q") ?? "";
   const [docs, setDocs] = useState<SearchDoc[]>([]);
-  const [input, setInput] = useState(q);
+  const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -18,7 +18,6 @@ export function SearchResults() {
       .then(setDocs)
       .catch(() => {});
   }, []);
-  useEffect(() => setInput(q), [q]);
 
   const results = searchDocs(docs, q, 60);
 
@@ -28,14 +27,16 @@ export function SearchResults() {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          router.push(`/search?q=${encodeURIComponent(input.trim())}`);
+          const v = (inputRef.current?.value ?? "").trim();
+          router.push(`/search?q=${encodeURIComponent(v)}`);
         }}
         className="mt-5 flex gap-2"
         role="search"
       >
         <input
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          ref={inputRef}
+          key={q}
+          defaultValue={q}
           placeholder="Search VA, USDA, FHA, credit…"
           aria-label="Search guides"
           className="w-full rounded-md border border-line-strong bg-surface px-4 py-2.5 text-ink outline-none focus:border-accent-2"

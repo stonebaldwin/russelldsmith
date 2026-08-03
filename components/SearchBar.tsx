@@ -58,7 +58,6 @@ export function SearchBar() {
   }, [open]);
 
   const results = searchDocs(docs, q, 6);
-  useEffect(() => setActive(0), [q]);
 
   function close() {
     setOpen(false);
@@ -91,7 +90,10 @@ export function SearchBar() {
             <input
               ref={inputRef}
               value={q}
-              onChange={(e) => setQ(e.target.value)}
+              onChange={(e) => {
+                setQ(e.target.value);
+                setActive(0);
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();
