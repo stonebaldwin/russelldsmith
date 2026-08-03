@@ -16,8 +16,8 @@ export function Wordmark({ className }: { className?: string }) {
         className="h-6 w-auto sm:h-7"
       />
       <span className="hidden h-6 w-px bg-line-strong sm:block" aria-hidden="true" />
-      <span className="hidden font-serif text-base leading-none font-semibold tracking-[0.04em] whitespace-nowrap text-accent uppercase sm:inline lg:text-lg">
-        Russell D Smith
+      <span className="font-poppins hidden text-base leading-none font-semibold tracking-[0.02em] whitespace-nowrap text-accent uppercase sm:inline lg:text-lg">
+        Russell Smith
       </span>
     </Link>
   );

@@ -47,7 +47,7 @@ export async function generateMetadata({
       description: post.description,
       publishedTime: post.date,
       modifiedTime: post.updated || post.date,
-      authors: ["Russell D Smith"],
+      authors: ["Russell Smith"],
       images: post.hero ? [{ url: absoluteUrl(post.hero) }] : undefined,
     },
     twitter: {

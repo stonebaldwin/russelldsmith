@@ -1,24 +1,24 @@
 /** Global site configuration + brand + Russell's real professional details. */
 
 export const SITE = {
-  name: "Russell D Smith",
-  shortName: "RDS",
+  name: "Russell Smith",
+  shortName: "RS",
   url: "https://russelldsmith.com",
   tagline: "Mortgage guidance you can trust.",
   description:
-    "Clear, trustworthy mortgage guidance from Russell D Smith — VA, USDA, FHA, first-time buyer, construction, jumbo, and investment property loans across NC, SC & VA.",
+    "Clear, trustworthy mortgage guidance from Russell Smith — VA, USDA, FHA, first-time buyer, construction, jumbo, and investment property loans across NC, SC & VA.",
   locale: "en_US",
 } as const;
 
 // Harvested from Russell's ALCOVA loan-officer page (alcova.com/loan-officer/rsmith).
 export const AUTHOR = {
-  name: "Russell D Smith",
+  name: "Russell Smith",
   role: "Branch Partner, ALCOVA Mortgage",
   tagline: "The Mortgage Strategist",
   nmls: "78989",
   servingArea: "NC, SC & VA",
   photo: "/media/site/russell-smith.png",
-  bio: "Russell D Smith is a mortgage strategist with 32 years in the business, serving buyers across North Carolina, South Carolina, and Virginia. Guided by faith and grounded in family, he is known for building creative financing strategies — especially for unique properties, large acreage, and farmland that don't fit inside a standard lending box. To Russell, choosing a lender is about far more than numbers: it's about trust and strategy.",
+  bio: "Russell Smith is a mortgage strategist with 32 years in the business, serving buyers across North Carolina, South Carolina, and Virginia. Guided by faith and grounded in family, he is known for building creative financing strategies — especially for unique properties, large acreage, and farmland that don't fit inside a standard lending box. To Russell, choosing a lender is about far more than numbers: it's about trust and strategy.",
 } as const;
 
 /** Russell's contact + secure application (ALCOVA HomeHub). */
@@ -47,7 +47,7 @@ export const SOCIAL = {
  * should still give this a final compliance review before launch.
  */
 export const COMPLIANCE = {
-  nmlsId: "78989", // Russell D Smith, individual NMLS
+  nmlsId: "78989", // Russell Smith, individual NMLS
   company: "ALCOVA Mortgage, LLC",
   companyNmls: "40508",
   companyAddress: "308 Market Street SE, Roanoke, VA 24011",

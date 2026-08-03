@@ -18,7 +18,7 @@ export async function generateMetadata({
   const label = categoryLabel(category);
   return {
     title: `${label} Guides`,
-    description: `Mortgage guides about ${label} from Russell D Smith.`,
+    description: `Mortgage guides about ${label} from Russell Smith.`,
     alternates: { canonical: `/blog/category/${category}/` },
   };
 }

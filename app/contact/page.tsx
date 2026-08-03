@@ -3,9 +3,9 @@ import { AUTHOR, CONTACT, COMPLIANCE } from "@/lib/site";
 import { ApplyLink } from "@/components/ApplyLink";
 
 export const metadata: Metadata = {
-  title: "Contact Russell D Smith",
+  title: "Contact Russell Smith",
   description:
-    "Get in touch with Russell D Smith to talk through your mortgage options or start a secure pre-qualification.",
+    "Get in touch with Russell Smith to talk through your mortgage options or start a secure pre-qualification.",
   alternates: { canonical: "/contact/" },
 };
 

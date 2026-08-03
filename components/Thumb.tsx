@@ -42,7 +42,7 @@ export function Thumb({
       ) : (
         <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent to-[#0f2340]">
           <span className="px-4 text-center font-serif text-lg font-medium text-white/85">
-            {category ? categoryLabel(category) : "Russell D Smith"}
+            {category ? categoryLabel(category) : "Russell Smith"}
           </span>
         </div>
       )}

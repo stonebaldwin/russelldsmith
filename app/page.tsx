@@ -53,7 +53,7 @@ export default function Home() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex items-end justify-between border-b-2 border-accent pt-14 pb-3">
           <h2 className="font-serif text-3xl font-medium text-accent sm:text-4xl">
-            Resources from Russell D Smith
+            Resources from Russell Smith
           </h2>
           <Link
             href="/blog/"

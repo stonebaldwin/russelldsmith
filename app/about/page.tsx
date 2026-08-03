@@ -5,7 +5,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { personJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "About Russell D Smith",
+  title: "About Russell Smith",
   description: AUTHOR.bio,
   alternates: { canonical: "/about/" },
 };
@@ -34,11 +34,11 @@ export default function AboutPage() {
         {/* eslint-disable-next-line @next/next/no-img-element -- preserved local team photo */}
         <img
           src="/media/site/team-move-mortgage-about-page-pic.jpg"
-          alt="Russell D Smith and his mortgage team"
+          alt="Russell Smith and his mortgage team"
           className="w-full rounded-xl border border-line object-cover"
         />
         <figcaption className="mt-2 text-sm text-muted">
-          Russell D Smith and his mortgage team.
+          Russell Smith and his mortgage team.
         </figcaption>
       </figure>
 

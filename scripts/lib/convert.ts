@@ -4,7 +4,7 @@
  *   - strip boilerplate / junk blocks
  *   - localize <img> to /images/blog/{slug}/... and report images to download
  *   - rewrite internal teammovemortgage.com links to site-relative via mapPath()
- *   - de-brand "Team Move" -> "Russell D Smith" on VISIBLE TEXT ONLY
+ *   - de-brand "Team Move" -> "Russell Smith" on VISIBLE TEXT ONLY
  *   - convert to GitHub-flavored Markdown (tables, etc.)
  * Returns markdown + the image manifest + audit flags. Never throws on content.
  */
@@ -29,8 +29,8 @@ export interface ConvertResult {
 }
 
 const BRAND_REPLACEMENTS: [RegExp, string][] = [
-  [/team\s*move\s+mortgage(,?\s+llc)?/gi, "Russell D Smith"],
-  [/\bteam\s*move\b/gi, "Russell D Smith"],
+  [/team\s*move\s+mortgage(,?\s+llc)?/gi, "Russell Smith"],
+  [/\bteam\s*move\b/gi, "Russell Smith"],
   [/teammovemortgage\.com/gi, "russelldsmith.com"],
 ];
 
@@ -220,7 +220,7 @@ export function htmlToMdx(
     const filename = filenameFromUrl(abs, usedNames);
     const localPath = `/images/blog/${slug}/${filename}`;
     images.push({ srcUrl: abs, localPath, filename });
-    // De-brand alt text (Team Move -> Russell D Smith) — attributes aren't
+    // De-brand alt text (Team Move -> Russell Smith) — attributes aren't
     // covered by the text-node walk below.
     const altRes = debrandText($img.attr("alt") || "");
     debrandCount += altRes.count;

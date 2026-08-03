@@ -18,7 +18,7 @@ export async function generateMetadata({
   const label = tagLabel(tag);
   return {
     title: `${label}`,
-    description: `Mortgage guides tagged ${label} from Russell D Smith.`,
+    description: `Mortgage guides tagged ${label} from Russell Smith.`,
     alternates: { canonical: `/blog/tag/${tag}/` },
   };
 }

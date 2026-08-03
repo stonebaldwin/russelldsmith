@@ -6,7 +6,7 @@ import { BlogListing } from "@/components/BlogListing";
 export const metadata: Metadata = {
   title: "Mortgage Guides",
   description:
-    "In-depth mortgage guides from Russell D Smith — VA, USDA, FHA, first-time buyer, construction, and more.",
+    "In-depth mortgage guides from Russell Smith — VA, USDA, FHA, first-time buyer, construction, and more.",
   alternates: { canonical: "/blog/" },
 };
 

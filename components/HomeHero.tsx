@@ -23,7 +23,7 @@ export function HomeHero() {
           experience.&rdquo;
         </p>
         <p className="mt-6 font-serif text-xl font-medium text-accent-light">
-          &mdash; Russell D Smith &mdash;
+          &mdash; Russell Smith &mdash;
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
           <ApplyLink className="rounded-md bg-white px-6 py-3 text-sm font-semibold text-accent transition-colors hover:bg-accent-light">
@@ -42,7 +42,7 @@ export function HomeHero() {
         {/* eslint-disable-next-line @next/next/no-img-element -- preserved local team photo */}
         <img
           src="/media/site/team-move-mortgage-pic.jpg"
-          alt="Russell D Smith and his mortgage team"
+          alt="Russell Smith and his mortgage team"
           fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />

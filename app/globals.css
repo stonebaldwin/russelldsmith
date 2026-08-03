@@ -31,7 +31,7 @@
 
 /* ------------------------------------------------------------------ */
 /* Design tokens — old-site branding: deep navy + light blue, clean     */
-/* white canvas. Kept as Russell D Smith.                               */
+/* white canvas. Kept as Russell Smith.                               */
 /* ------------------------------------------------------------------ */
 :root {
   --canvas: #ffffff;
@@ -56,6 +56,7 @@
     "Helvetica Neue", Arial, sans-serif;
   --font-serif: "Futura PT", "Futura", "Century Gothic", "Segoe UI", system-ui,
     sans-serif;
+  --font-poppins: var(--font-poppins-face), "Poppins", ui-sans-serif, sans-serif;
 
   --color-canvas: var(--canvas);
   --color-surface: var(--surface);
