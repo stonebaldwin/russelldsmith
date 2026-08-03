@@ -7,8 +7,10 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
 import { VideoSection } from "@/components/VideoSection";
+import { ExperienceSection } from "@/components/ExperienceSection";
+import { Testimonials } from "@/components/Testimonials";
 import { JsonLd } from "@/components/JsonLd";
-import { websiteJsonLd } from "@/lib/seo";
+import { websiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -28,6 +30,7 @@ export default function Home() {
   return (
     <>
       <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={localBusinessJsonLd()} />
       <HomeHero />
 
       {/* Loan-program band */}
@@ -48,6 +51,11 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      {/* The best mortgage lender experience */}
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <ExperienceSection />
+      </div>
 
       {/* Resources / blog */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
@@ -83,6 +91,8 @@ export default function Home() {
             <SectionRail title="Latest guides" href="/blog/" posts={posts.slice(0, 6)} />
 
             <VideoSection />
+
+            <Testimonials title="What our clients think" limit={6} />
 
             <CtaBlock />
           </div>

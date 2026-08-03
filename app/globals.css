@@ -41,12 +41,12 @@
   --muted: #626b7a; /* meta / secondary text */
   --line: #e3e8f0; /* cool hairline borders */
   --line-strong: #ccd5e2;
-  --accent: #1a2f80; /* brand navy (from old site #1a2f80) */
-  --accent-deep: #14245f; /* darker navy */
-  --accent-2: #1a2f80; /* links / CTAs — navy */
-  --accent-2-hover: #263a86;
-  --accent-light: #c5dfe0; /* light blue — headings on navy, accents */
-  --accent-pale: #e7f0f0; /* pale blue section backgrounds */
+  --accent: #00589d; /* ALCOVA Mortgage brand blue */
+  --accent-deep: #00426f; /* darker ALCOVA blue */
+  --accent-2: #00589d; /* links / CTAs — ALCOVA blue */
+  --accent-2-hover: #00426f;
+  --accent-light: #bfe0f7; /* light blue — headings on blue, accents */
+  --accent-pale: #e8f2fb; /* pale blue section backgrounds */
   --accent-contrast: #ffffff;
 }
 

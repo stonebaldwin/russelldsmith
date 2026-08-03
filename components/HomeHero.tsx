@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CTA } from "@/lib/site";
 import { ApplyLink } from "./ApplyLink";
+import { RatingBadge } from "./RatingBadge";
 
 /**
  * Homepage hero — modeled closely on the old teammovemortgage.com hero:
@@ -36,6 +37,7 @@ export function HomeHero() {
             Explore guides
           </Link>
         </div>
+        <RatingBadge tone="light" className="mt-8" />
       </div>
 
       <div className="relative min-h-[340px] bg-accent-deep lg:min-h-0">

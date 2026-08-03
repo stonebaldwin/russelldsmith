@@ -1,6 +1,7 @@
 import type { Post } from "./content";
 import { SITE_URL, categoryLabel } from "./content";
 import { SITE, AUTHOR, CONTACT, SOCIAL, COMPLIANCE } from "./site";
+import { RATING, TESTIMONIALS } from "./reviews";
 
 export function absoluteUrl(path: string): string {
   if (/^https?:\/\//i.test(path)) return path;
@@ -80,5 +81,33 @@ export function websiteJsonLd() {
     name: SITE.name,
     url: SITE_URL,
     description: SITE.description,
+  };
+}
+
+/** Loan-officer business entity with the Experience.com aggregate rating. */
+export function localBusinessJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": ["FinancialService", "LocalBusiness"],
+    name: `${AUTHOR.name} — ${COMPLIANCE.company}`,
+    image: absoluteUrl(AUTHOR.photo),
+    url: SITE_URL,
+    telephone: CONTACT.phone,
+    email: CONTACT.email,
+    areaServed: AUTHOR.servingArea,
+    priceRange: "$$",
+    sameAs: [SOCIAL.facebook, SOCIAL.youtube, RATING.url],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: RATING.value,
+      reviewCount: RATING.count,
+      bestRating: RATING.max,
+    },
+    review: TESTIMONIALS.slice(0, 3).map((t) => ({
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: 5, bestRating: 5 },
+      author: { "@type": "Person", name: t.author },
+      reviewBody: t.body,
+    })),
   };
 }

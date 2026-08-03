@@ -40,7 +40,7 @@ export function Thumb({
           className="h-full w-full object-cover"
         />
       ) : (
-        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent to-[#0f2340]">
+        <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-accent to-accent-deep">
           <span className="px-4 text-center font-serif text-lg font-medium text-white/85">
             {category ? categoryLabel(category) : "Russell Smith"}
           </span>
