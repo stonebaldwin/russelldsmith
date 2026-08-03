@@ -116,7 +116,7 @@ export const LANDING_PAGES: LandingPage[] = [
 export const LANDING_SLUGS = LANDING_PAGES.map((p) => p.slug);
 
 /** Core (non-landing, non-blog) routes that must exist. */
-export const CORE_ROUTES = ["/", "/blog/", "/videos/", "/about/", "/contact/"];
+export const CORE_ROUTES = ["/", "/blog/", "/about/", "/contact/"];
 
 /** Posts per page on the /blog index. */
 export const POSTS_PER_PAGE = 24;
@@ -128,7 +128,7 @@ export const PRIMARY_NAV: { label: string; href: string }[] = [
   { label: "FHA", href: "/fha-loans/" },
   { label: "First-Time Buyers", href: "/blog/category/1st-time-buyers/" },
   { label: "Guides", href: "/blog/" },
-  { label: "Videos", href: "/videos/" },
+  { label: "Calculators", href: "/mortgage-calculators/" },
   { label: "About", href: "/about/" },
 ];
 

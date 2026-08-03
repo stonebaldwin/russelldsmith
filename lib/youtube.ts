@@ -1,12 +1,26 @@
 import fs from "node:fs";
 import path from "node:path";
 
+export interface Video {
+  id: string;
+  title: string;
+  duration: string;
+}
 export interface Playlist {
   id: string;
   title: string;
   count: number;
   url: string;
   thumb: string;
+  videos: Video[];
+}
+
+/** YouTube CDN thumbnail for a video (safe to hot-link; it's YouTube's own CDN). */
+export function videoThumb(id: string): string {
+  return `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;
+}
+export function watchUrl(id: string): string {
+  return `https://www.youtube.com/watch?v=${id}`;
 }
 export interface YouTubeData {
   channel: { name: string; handle: string; id: string; url: string };

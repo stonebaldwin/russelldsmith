@@ -1,29 +1,30 @@
-import Link from "next/link";
-import { getPlaylists } from "@/lib/youtube";
-import { LitePlaylist } from "./LitePlaylist";
+import { getPlaylists, getChannel } from "@/lib/youtube";
+import { HomeVideos } from "./HomeVideos";
 
-/** Homepage "video guides" section — features the top playlists. */
+/** Homepage video section — one playlist player + a selector to switch playlists. */
 export function VideoSection() {
-  const all = getPlaylists();
-  if (!all.length) return null;
-  const featured = all.slice(0, 3);
+  const playlists = getPlaylists().filter((p) => p.videos.length);
+  if (!playlists.length) return null;
+  const channel = getChannel();
 
   return (
     <section>
       <div className="flex items-end justify-between border-b-2 border-accent/15 pb-2.5">
         <h2 className="font-serif text-2xl font-medium text-accent">Watch &amp; learn</h2>
-        <Link href="/videos/" className="text-sm font-medium text-accent-2 hover:underline">
-          All {all.length} playlists →
-        </Link>
+        <a
+          href={channel.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-sm font-medium text-accent-2 hover:underline"
+        >
+          Subscribe on YouTube →
+        </a>
       </div>
       <p className="mt-3 max-w-2xl text-muted">
-        Russell breaks down every loan type on YouTube — step-by-step video guides you can watch
-        before you ever fill out an application.
+        Russell breaks down every loan type on YouTube — pick a series and start watching.
       </p>
-      <div className="mt-6 grid gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-        {featured.map((p) => (
-          <LitePlaylist key={p.id} playlist={p} />
-        ))}
+      <div className="mt-6">
+        <HomeVideos playlists={playlists} />
       </div>
     </section>
   );

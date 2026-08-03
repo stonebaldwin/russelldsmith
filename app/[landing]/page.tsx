@@ -7,7 +7,7 @@ import { CtaBlock } from "@/components/CtaBlock";
 import { ApplyLink } from "@/components/ApplyLink";
 import { MortgageCalculator } from "@/components/MortgageCalculator";
 import { VAFundingFeeTable } from "@/components/VAFundingFeeTable";
-import { LitePlaylist } from "@/components/LitePlaylist";
+import { VideoPlayer } from "@/components/VideoPlayer";
 import { getPlaylistForTopic } from "@/lib/youtube";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/seo";
@@ -100,13 +100,16 @@ export default async function LandingPage({
         </div>
       ) : null}
 
-      {playlist ? (
+      {playlist && playlist.videos.length ? (
         <section className="mt-16">
           <h2 className="border-b-2 border-accent/15 pb-2.5 font-serif text-2xl font-medium text-accent">
             Watch: {page.title} on video
           </h2>
-          <div className="mt-6 max-w-3xl">
-            <LitePlaylist playlist={playlist} />
+          <p className="mt-3 max-w-2xl text-muted">
+            {playlist.videos.length} short video guides from Russell&rsquo;s {page.title} series.
+          </p>
+          <div className="mt-6">
+            <VideoPlayer playlist={playlist} />
           </div>
         </section>
       ) : null}
