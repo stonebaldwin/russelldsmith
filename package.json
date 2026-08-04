@@ -21,7 +21,10 @@
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
-    "content:youtube": "tsx scripts/scrape-youtube.ts"
+    "content:youtube": "tsx scripts/scrape-youtube.ts",
+    "images:preview": "tsx scripts/preview-image-queries.ts",
+    "images:fetch": "tsx scripts/fetch-stock-images.ts",
+    "images:apply": "tsx scripts/apply-stock-images.ts"
   },
   "dependencies": {
     "github-slugger": "^2.0.0",
