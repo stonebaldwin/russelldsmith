@@ -26,6 +26,17 @@ Russell → /admin (password login)
 
 ## One-time setup
 
+### Fastest path — the guided script
+
+```bash
+bash scripts/setup-cms-secrets.sh
+```
+
+It generates `SESSION_SECRET`, then prompts you for the password + tokens and
+wires all 5 secrets (3 on the Worker, 2 in GitHub Actions). `CLOUDFLARE_ACCOUNT_ID`
+is already set. Values are piped straight to `wrangler`/`gh` — never printed or
+saved. The manual equivalent is below.
+
 ### 1. Worker secrets (so the CMS can run + commit)
 
 Set these on the `russelldsmith` Worker (Cloudflare dashboard → Workers → Settings
