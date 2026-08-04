@@ -1,0 +1,36 @@
+/* CMS-scoped styles. The public site tokens (--accent, --ink, --line, …) from
+   globals.css are still in scope; this just sets the app canvas + small niceties. */
+.admin-root {
+  min-height: 100vh;
+  background: #f4f6fb;
+  color: var(--ink);
+}
+
+/* Reuse the article typography for the live editor preview. */
+.admin-preview {
+  font-size: 1rem;
+}
+
+/* Thin, unobtrusive scrollbars inside editor panes. */
+.admin-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.admin-scroll::-webkit-scrollbar-thumb {
+  background: #ccd5e2;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+.admin-scroll::-webkit-scrollbar-thumb:hover {
+  background: #aeb9cc;
+  background-clip: content-box;
+}
+
+/* Editor textarea: monospace for MDX legibility. */
+.mdx-textarea {
+  font-family: ui-monospace, SFMono-Regular, Menlo, "Cascadia Code", monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  tab-size: 2;
+}

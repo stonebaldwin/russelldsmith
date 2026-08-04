@@ -1,0 +1,17 @@
+# Local CMS secrets for `next dev` (copy to .dev.vars, which is gitignored).
+# In production these are set as Cloudflare Worker secrets — see docs/CMS.md.
+
+NEXTJS_ENV=development
+
+# Password Russell types to sign in at /admin
+ADMIN_PASSWORD=choose-a-strong-password
+
+# Random string used to sign the session cookie (e.g. `openssl rand -hex 32`)
+SESSION_SECRET=replace-with-64-hex-chars
+
+# GitHub token with read/write to the repo's Contents (fine-grained PAT)
+GITHUB_TOKEN=github_pat_xxx
+
+# Repo the CMS commits to (also set as Worker vars in wrangler.jsonc)
+GITHUB_REPO=stonebaldwin/russelldsmith
+GITHUB_BRANCH=main

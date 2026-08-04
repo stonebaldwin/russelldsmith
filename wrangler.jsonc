@@ -18,6 +18,12 @@
   ],
   "images": {
     "binding": "IMAGES"
+  },
+  // Non-secret CMS config. Secrets (ADMIN_PASSWORD, SESSION_SECRET, GITHUB_TOKEN)
+  // are set with `wrangler secret put` — never here. See docs/CMS.md.
+  "vars": {
+    "GITHUB_REPO": "stonebaldwin/russelldsmith",
+    "GITHUB_BRANCH": "main"
   }
   // After DNS is on Cloudflare, bind the production hostname:
   // "routes": [{ "pattern": "russelldsmith.com/*", "zone_name": "russelldsmith.com" }]

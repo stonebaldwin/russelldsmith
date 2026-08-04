@@ -24,7 +24,8 @@
     "content:youtube": "tsx scripts/scrape-youtube.ts",
     "images:preview": "tsx scripts/preview-image-queries.ts",
     "images:fetch": "tsx scripts/fetch-stock-images.ts",
-    "images:apply": "tsx scripts/apply-stock-images.ts"
+    "images:apply": "tsx scripts/apply-stock-images.ts",
+    "content:index": "tsx scripts/build-blog-index.ts"
   },
   "dependencies": {
     "github-slugger": "^2.0.0",

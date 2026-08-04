@@ -1,0 +1,41 @@
+name: Deploy to Cloudflare
+
+# Publishes the site whenever content or code lands on main — including the
+# `cms: …` commits the CMS pushes via the GitHub API. This is what makes an edit
+# in /admin go live.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Avoid overlapping deploys; let the newest push win.
+concurrency:
+  group: deploy-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      # Keep the dashboard index + redirect manifest in sync with the MDX on disk
+      # (used for the build; not committed back, to avoid a push→deploy loop).
+      - run: npm run content:index
+      - run: npm run content:manifest
+
+      - name: Build (OpenNext for Cloudflare)
+        run: npx opennextjs-cloudflare build
+
+      - name: Deploy
+        run: npx opennextjs-cloudflare deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
