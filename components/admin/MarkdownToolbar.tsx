@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, type RefObject } from "react";
+import { markdownForImage, uploadImageFile } from "./editor-utils";
 
 interface Props {
   textareaRef: RefObject<HTMLTextAreaElement | null>;
@@ -73,28 +74,14 @@ export function MarkdownToolbar({ textareaRef, value, setValue, slug }: Props) {
     const file = e.target.files?.[0];
     e.target.value = "";
     if (!file) return;
-    if (!slug) {
-      alert("Set the post slug first (top of the form) so images can be filed under it.");
+    setUploading(true);
+    const { path, error } = await uploadImageFile(slug, file);
+    setUploading(false);
+    if (error || !path) {
+      alert(error ?? "Upload failed.");
       return;
     }
-    setUploading(true);
-    try {
-      const dataUrl = await readAsDataURL(file);
-      const res = await fetch("/api/admin/upload", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ slug, filename: file.name, dataUrl }),
-      });
-      const data = (await res.json()) as { path?: string; error?: string };
-      if (!res.ok || !data.path) {
-        alert(data.error ?? "Upload failed.");
-        return;
-      }
-      const alt = file.name.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ");
-      insert(`\n![${alt}](${data.path})\n`);
-    } finally {
-      setUploading(false);
-    }
+    insert(`\n${markdownForImage(file, path)}\n`);
   }
 
   return (
@@ -174,13 +161,4 @@ function Btn({
 }
 function Sep() {
   return <span className="mx-1 h-5 w-px bg-line" />;
-}
-
-function readAsDataURL(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const r = new FileReader();
-    r.onload = () => resolve(r.result as string);
-    r.onerror = reject;
-    r.readAsDataURL(file);
-  });
 }

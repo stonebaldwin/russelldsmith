@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { MarkdownBody } from "@/components/MarkdownBody";
 import { MarkdownToolbar } from "./MarkdownToolbar";
 import { CategorySelect, HeroField, SeoSnippet, TagInput } from "./editor-fields";
+import { markdownForImage, uploadImageFile } from "./editor-utils";
 import { isValidSlug, slugify, type PostFrontmatter } from "@/lib/admin/mdx";
 
 type Mode = "new" | "edit";
@@ -31,8 +32,13 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
   const [error, setError] = useState<string | null>(null);
   const [savedAt, setSavedAt] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const [uploadingBody, setUploadingBody] = useState(false);
+  const [localSavedAt, setLocalSavedAt] = useState<string | null>(null);
+  const [recovery, setRecovery] = useState<{ fm: PostFrontmatter; body: string; at: number } | null>(null);
 
   const taRef = useRef<HTMLTextAreaElement>(null);
+  const storageKey = `rs-cms-draft:${mode}:${initialFrontmatter.slug || "new"}`;
 
   const update = useCallback((patch: Partial<PostFrontmatter>) => {
     setFm((prev) => ({ ...prev, ...patch }));
@@ -47,6 +53,64 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
   function onBody(v: string) {
     setBody(v);
     setDirty(true);
+  }
+
+  // Insert image markdown at the caret (used by drag-drop + paste).
+  const insertImageMarkdown = useCallback((md: string) => {
+    const ta = taRef.current;
+    setBody((prev) => {
+      const at = ta ? Math.min(ta.selectionStart, prev.length) : prev.length;
+      const lead = at > 0 && prev[at - 1] !== "\n" ? "\n" : "";
+      const text = lead + md + "\n";
+      const caret = at + text.length;
+      requestAnimationFrame(() => {
+        if (ta) {
+          ta.focus();
+          ta.setSelectionRange(caret, caret);
+        }
+      });
+      return prev.slice(0, at) + text + prev.slice(at);
+    });
+    setDirty(true);
+  }, []);
+
+  const handleFiles = useCallback(
+    async (files: File[]) => {
+      const images = files.filter((f) => f.type.startsWith("image/"));
+      if (!images.length) return;
+      if (!fm.slug) {
+        setError("Set the post slug first so images can be filed under this post.");
+        return;
+      }
+      setError(null);
+      setUploadingBody(true);
+      for (const file of images) {
+        const { path, error: upErr } = await uploadImageFile(fm.slug, file);
+        if (path) insertImageMarkdown(markdownForImage(file, path));
+        else setError(upErr ?? "Upload failed.");
+      }
+      setUploadingBody(false);
+    },
+    [fm.slug, insertImageMarkdown],
+  );
+
+  function onDrop(e: React.DragEvent<HTMLTextAreaElement>) {
+    const files = Array.from(e.dataTransfer?.files ?? []);
+    if (files.some((f) => f.type.startsWith("image/"))) {
+      e.preventDefault();
+      setDragOver(false);
+      void handleFiles(files);
+    }
+  }
+  function onPaste(e: React.ClipboardEvent<HTMLTextAreaElement>) {
+    const files = Array.from(e.clipboardData?.items ?? [])
+      .filter((it) => it.kind === "file" && it.type.startsWith("image/"))
+      .map((it) => it.getAsFile())
+      .filter((f): f is File => !!f);
+    if (files.length) {
+      e.preventDefault();
+      void handleFiles(files);
+    }
   }
 
   const save = useCallback(
@@ -73,6 +137,11 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
         }
         setFm(next);
         setDirty(false);
+        try {
+          localStorage.removeItem(storageKey);
+        } catch {}
+        setLocalSavedAt(null);
+        setRecovery(null);
         setSavedAt(new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }));
         if (mode === "new" && data.slug) {
           router.push(`/admin/posts/${data.slug}/edit`);
@@ -86,7 +155,7 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
         setSaving(false);
       }
     },
-    [fm, body, sha, mode, initialFrontmatter.slug, router],
+    [fm, body, sha, mode, initialFrontmatter.slug, router, storageKey],
   );
 
   // Cmd/Ctrl+S to save
@@ -113,6 +182,35 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
     return () => window.removeEventListener("beforeunload", beforeUnload);
   }, [dirty]);
 
+  // Local autosave — recovery only; it never commits to GitHub (that stays
+  // explicit via Save/Publish), so there's no commit/deploy spam.
+  useEffect(() => {
+    if (!dirty) return;
+    const t = setTimeout(() => {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify({ fm, body, at: Date.now() }));
+        setLocalSavedAt(new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }));
+      } catch {}
+    }, 800);
+    return () => clearTimeout(t);
+  }, [fm, body, dirty, storageKey]);
+
+  // On mount, offer to restore a newer local draft (e.g. after an accidental reload).
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(storageKey);
+      if (!raw) return;
+      const saved = JSON.parse(raw) as { fm: PostFrontmatter; body: string; at: number };
+      const changed =
+        saved.body !== initialBody || JSON.stringify(saved.fm) !== JSON.stringify(initialFrontmatter);
+      // Client-only: read persisted draft on mount (avoids SSR hydration mismatch).
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (changed) setRecovery(saved);
+      else localStorage.removeItem(storageKey);
+    } catch {}
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const isDraft = !!fm.draft || mode === "new";
 
   return (
@@ -127,6 +225,9 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
         </div>
         {savedAt && !dirty ? <span className="text-xs text-emerald-600">Saved {savedAt}</span> : null}
         {dirty ? <span className="text-xs text-amber-600">● Unsaved</span> : null}
+        {dirty && localSavedAt ? (
+          <span className="hidden text-xs text-muted sm:inline">· backed up {localSavedAt}</span>
+        ) : null}
         <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${isDraft ? "bg-amber-100 text-amber-700" : "bg-emerald-100 text-emerald-700"}`}>
           {isDraft ? "Draft" : "Published"}
         </span>
@@ -152,6 +253,39 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
           )}
         </div>
       </div>
+
+      {recovery ? (
+        <div className="mx-5 mt-4 flex flex-wrap items-center gap-3 rounded-lg border border-amber-200 bg-amber-50 px-4 py-2.5 text-sm text-amber-900 lg:mx-8">
+          <span>
+            Unsaved local changes from {new Date(recovery.at).toLocaleString()} were found (they were
+            never published).
+          </span>
+          <div className="ml-auto flex gap-2">
+            <button
+              onClick={() => {
+                setFm(recovery.fm);
+                setBody(recovery.body);
+                setDirty(true);
+                setRecovery(null);
+              }}
+              className="rounded-md bg-amber-600 px-3 py-1 text-xs font-medium text-white hover:bg-amber-700"
+            >
+              Restore them
+            </button>
+            <button
+              onClick={() => {
+                try {
+                  localStorage.removeItem(storageKey);
+                } catch {}
+                setRecovery(null);
+              }}
+              className="rounded-md border border-amber-300 px-3 py-1 text-xs font-medium text-amber-800 hover:bg-amber-100"
+            >
+              Discard
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       {error ? (
         <div className="mx-5 mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-700 lg:mx-8">{error}</div>
@@ -198,13 +332,38 @@ export function PostEditor({ mode, initialFrontmatter, initialBody, initialSha }
             </div>
             <div className={`grid ${view === "split" ? "md:grid-cols-2" : "grid-cols-1"}`}>
               {view !== "preview" ? (
-                <textarea
-                  ref={taRef}
-                  value={body}
-                  onChange={(e) => onBody(e.target.value)}
-                  placeholder="Write your post in Markdown…"
-                  className="mdx-textarea admin-scroll min-h-[58vh] w-full resize-none border-0 border-r border-line px-4 py-4 text-ink outline-none"
-                />
+                <div
+                  className="relative border-r border-line"
+                  onDragOver={(e) => {
+                    if (e.dataTransfer?.types?.includes("Files")) {
+                      e.preventDefault();
+                      setDragOver(true);
+                    }
+                  }}
+                  onDragLeave={() => setDragOver(false)}
+                >
+                  <textarea
+                    ref={taRef}
+                    value={body}
+                    onChange={(e) => onBody(e.target.value)}
+                    onDrop={onDrop}
+                    onPaste={onPaste}
+                    placeholder="Write your post in Markdown…  (drag, drop, or paste images anywhere)"
+                    className="mdx-textarea admin-scroll min-h-[58vh] w-full resize-none border-0 px-4 py-4 text-ink outline-none"
+                  />
+                  {dragOver ? (
+                    <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-accent/5 ring-2 ring-inset ring-accent">
+                      <span className="rounded-lg bg-accent px-3 py-1.5 text-sm font-medium text-white shadow">
+                        Drop image to upload
+                      </span>
+                    </div>
+                  ) : null}
+                  {uploadingBody ? (
+                    <div className="pointer-events-none absolute bottom-3 right-3 rounded-md bg-ink/80 px-2.5 py-1 text-xs text-white">
+                      Uploading…
+                    </div>
+                  ) : null}
+                </div>
               ) : null}
               {view !== "write" ? (
                 <div className="admin-scroll min-h-[58vh] overflow-auto px-5 py-4">

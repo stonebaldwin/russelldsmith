@@ -71,11 +71,14 @@ npm run dev                      # http://localhost:3000/admin
   - Markdown body with a formatting toolbar (headings, bold/italic, lists,
     quotes, links, tables, inline code, dividers) and a **live split preview**
     that renders exactly like the live site.
-  - **Image upload** — drops files into `public/images/blog/{slug}/` and inserts
-    the Markdown for you (also used for the hero).
+  - **Image upload** — toolbar button, **drag-and-drop, or paste** (e.g. a
+    screenshot) drops files into `public/images/blog/{slug}/` and inserts the
+    Markdown for you (also used for the hero).
   - Sidebar: hero image, categories, tags, publish/updated dates.
   - **SEO tab**: Google-style search-result preview + canonical URL.
-  - `⌘/Ctrl+S` saves. Unsaved-changes are flagged and warn before you leave.
+  - `⌘/Ctrl+S` saves. Unsaved changes are flagged and warn before you leave, and
+    are **auto-backed-up to your browser** — reload or crash recovery offers to
+    restore them (this local backup never commits; publishing stays explicit).
 - **Draft vs Publish.** Drafts are committed but excluded from the public site
   (they never render). Publish makes a post live on the next deploy.
 

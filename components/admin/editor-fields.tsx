@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CATEGORY_OPTIONS, categoryLabel } from "@/lib/admin/taxonomy";
+import { uploadImageFile } from "./editor-utils";
 
 // ---- Category multiselect ---------------------------------------------------
 export function CategorySelect({ value, onChange }: { value: string[]; onChange: (v: string[]) => void }) {
@@ -114,29 +115,11 @@ export function HeroField({
     const file = e.target.files?.[0];
     e.target.value = "";
     if (!file) return;
-    if (!slug) {
-      alert("Set the slug first so the image can be filed under this post.");
-      return;
-    }
     setUploading(true);
-    try {
-      const dataUrl = await new Promise<string>((res, rej) => {
-        const r = new FileReader();
-        r.onload = () => res(r.result as string);
-        r.onerror = rej;
-        r.readAsDataURL(file);
-      });
-      const resp = await fetch("/api/admin/upload", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ slug, filename: file.name, dataUrl }),
-      });
-      const data = (await resp.json()) as { path?: string; error?: string };
-      if (!resp.ok || !data.path) alert(data.error ?? "Upload failed.");
-      else onHero(data.path);
-    } finally {
-      setUploading(false);
-    }
+    const { path, error } = await uploadImageFile(slug, file);
+    setUploading(false);
+    if (error || !path) alert(error ?? "Upload failed.");
+    else onHero(path);
   }
 
   return (
