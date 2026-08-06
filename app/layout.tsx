@@ -13,6 +13,13 @@ const poppins = Poppins({
   display: "swap",
 });
 
+const OG_DEFAULT = {
+  url: "/media/site/og-default.png",
+  width: 1200,
+  height: 630,
+  alt: "Russell Smith — The Mortgage Strategist, ALCOVA Mortgage",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://russelldsmith.com"),
   title: {
@@ -21,6 +28,20 @@ export const metadata: Metadata = {
   },
   description:
     "Clear, trustworthy mortgage guidance from Russell Smith: VA, USDA, FHA, first-time buyer, construction, and jumbo loan guides.",
+  // Default social card. Pages inherit this unless they set their own
+  // openGraph (blog posts override images with their hero). og:title /
+  // og:description are auto-derived from each page's title/description.
+  openGraph: {
+    type: "website",
+    siteName: "Russell Smith — ALCOVA Mortgage",
+    locale: "en_US",
+    url: "/",
+    images: [OG_DEFAULT],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [OG_DEFAULT.url],
+  },
 };
 
 export default function RootLayout({

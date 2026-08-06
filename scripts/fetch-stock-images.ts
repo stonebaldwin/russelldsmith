@@ -183,7 +183,7 @@ async function fetchRetry(url: string, init: RequestInit, tries = 3): Promise<Re
         return null;
       }
       return res;
-    } catch (e) {
+    } catch {
       await sleep(2000 * (i + 1));
     }
   }

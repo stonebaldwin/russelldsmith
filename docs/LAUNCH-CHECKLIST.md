@@ -8,11 +8,14 @@ Google). Everything else is built and verified in the repo.
 - **Cloudflare account** with **both** zones added (nameservers pointed to
   Cloudflare): `russelldsmith.com` and `teammovemortgage.com`.
 - `wrangler login` completed locally (or a `CLOUDFLARE_API_TOKEN`).
-- **Compliance details** to replace the placeholders in `lib/site.ts`:
-  `{{NMLS_ID}}`, `{{COMPANY}}`, `{{COMPANY_NMLS}}`, `{{LICENSED_STATES}}`, plus
-  the contact `{{PHONE}}`/`{{EMAIL}}`/`{{APPLICATION_URL}}` in
-  `app/contact/page.tsx`.
+- **Compliance details** — already filled from Russell's ALCOVA loan-officer
+  profile in `lib/site.ts` (NMLS #78989, ALCOVA Mortgage, LLC #40508, licensed
+  states, GA/NJ notices, contact + HomeHub application). **No placeholders
+  remain** — only a final legal review of the footer disclosure is outstanding.
 - Google Search Console access for both domains.
+- (For `/admin` CMS in production) **Worker secrets**: `ADMIN_PASSWORD`,
+  `SESSION_SECRET`, `GITHUB_TOKEN` — see `docs/CMS.md` / `scripts/setup-cms-secrets.sh`.
+  Not required for the public site to work; only the CMS needs them.
 
 ## 1. Pre-launch (in the repo — status)
 
@@ -25,8 +28,10 @@ Google). Everything else is built and verified in the repo.
 - [x] Images downloaded locally to `public/images/blog/**` (never hot-linked).
 - [x] `content-manifest.json` generated.
 - [x] **Redirect test passes with zero dead destinations** (`npm run test:redirects`).
-- [x] Sitemap (`/sitemap.xml`), `robots.txt`, self-referencing canonicals,
-  JSON-LD (Article, Breadcrumb, Person, WebSite).
+- [x] Sitemap (`/sitemap.xml`, 1,716 URLs), `robots.txt` (disallows `/admin` +
+  `/api/`), self-referencing canonicals, JSON-LD (Article, Breadcrumb, Person,
+  WebSite, LocalBusiness w/ aggregate rating), Open Graph + Twitter cards with a
+  branded default social image (`public/media/site/og-default.png`, `npm run gen:og`).
 - [x] Compliance footer present (with placeholders).
 - [x] Compliance + contact details filled from Russell's ALCOVA loan-officer
   profile — NMLS #78989, ALCOVA Mortgage, LLC (NMLS #40508), (910) 352-6344,
@@ -46,7 +51,11 @@ npm run deploy          # opennextjs-cloudflare build && deploy
 - [ ] **[you]** In the Cloudflare dashboard (or via `wrangler.jsonc` `routes`),
   bind the Worker to `russelldsmith.com/*`.
 - [ ] Retire the old GoDaddy site currently on `russelldsmith.com`.
-- [ ] (Optional) Add Cloudflare Web Analytics.
+- [ ] **[you]** Set the CMS Worker secrets if using `/admin` (see §0):
+  `bash scripts/setup-cms-secrets.sh` or `wrangler secret put …`.
+- [ ] **[you]** Enable **Cloudflare Web Analytics** for `russelldsmith.com`
+  (dashboard → Web Analytics → Add site). On a proxied Cloudflare zone the beacon
+  is auto-injected — no code change needed. This is how you'll measure traffic.
 
 ## 3. Deploy the redirect Worker (teammovemortgage.com)
 
@@ -77,7 +86,9 @@ npx wrangler deploy
 
 ## 5. Search Console **[you]**
 
-- [ ] Verify **both** domains in GSC.
+- [ ] Verify **both** domains in GSC. Easiest for Cloudflare-managed domains:
+  **Domain property → DNS TXT** verification (Cloudflare can add the TXT record
+  in one click; no code change, verifies the whole domain incl. `www`).
 - [ ] Submit `https://russelldsmith.com/sitemap.xml`.
 - [ ] On the old `teammovemortgage.com` property, run **Change of Address** →
   point to `russelldsmith.com`.
