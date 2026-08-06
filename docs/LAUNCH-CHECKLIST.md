@@ -5,8 +5,13 @@ Google). Everything else is built and verified in the repo.
 
 ## 0. What you need to have handy
 
-- **Cloudflare account** with **both** zones added (nameservers pointed to
-  Cloudflare): `russelldsmith.com` and `teammovemortgage.com`.
+- **Cloudflare account** with **both** zones added. Both domains are registered
+  at **GoDaddy** — GoDaddy stays the registrar; you only move DNS to Cloudflare.
+  Cloudflare Workers custom domains require the zone's DNS to be on Cloudflare, so
+  for each domain: add it as a Cloudflare site → Cloudflare shows two nameservers
+  → in **GoDaddy → Domain → Nameservers → Change**, replace GoDaddy's with those
+  two. (This is what "point the domain to Cloudflare" means below.) Moving
+  `russelldsmith.com`'s NS retires the old GoDaddy landing page automatically.
 - `wrangler login` completed locally (or a `CLOUDFLARE_API_TOKEN`).
 - **Compliance details** — already filled from Russell's ALCOVA loan-officer
   profile in `lib/site.ts` (NMLS #78989, ALCOVA Mortgage, LLC #40508, licensed
@@ -78,9 +83,13 @@ npx wrangler deploy
 
 ## 4. DNS cutover **[you]**
 
-- [ ] Point `russelldsmith.com` (A/AAAA/CNAME per Cloudflare Workers routing) to
-  the site Worker. Keep `teammovemortgage.com` on Cloudflare for the redirect
-  Worker.
+- [ ] Switch **both** domains' nameservers at **GoDaddy → Cloudflare** (see §0)
+  if not already done. Until this is done, `wrangler deploy`'s custom-domain
+  routes can't attach.
+- [ ] Bind `russelldsmith.com` to the site Worker (Workers routes / custom
+  domain). With DNS on Cloudflare, adding the Worker custom domain creates the
+  needed records automatically.
+- [ ] Keep `teammovemortgage.com` on Cloudflare for the redirect Worker.
 - [ ] **Do not** mass-redirect the old domain to the homepage — the redirect
   Worker handles per-URL 301s. (Hard rule.)
 
