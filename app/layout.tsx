@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -64,6 +65,12 @@ export default function RootLayout({
         <ChromeGate>
           <SiteFooter />
         </ChromeGate>
+        {/* Ahrefs Web Analytics */}
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="pK2hhObpJZFKI+oDtQn16w"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
