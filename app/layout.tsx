@@ -71,6 +71,17 @@ export default function RootLayout({
           data-key="pK2hhObpJZFKI+oDtQn16w"
           strategy="afterInteractive"
         />
+        {/* Google tag (gtag.js) — GA4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8G606TGQ2B"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8G606TGQ2B');`}
+        </Script>
       </body>
     </html>
   );
