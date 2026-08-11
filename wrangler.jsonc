@@ -25,9 +25,12 @@
     "GITHUB_REPO": "stonebaldwin/russelldsmith",
     "GITHUB_BRANCH": "main"
   },
-  // Bind the Worker to the production hostname. `custom_domain` lets Cloudflare
-  // provision + manage the apex's DNS record and SSL certificate automatically,
-  // so every deploy serves russelldsmith.com. (www → apex can be added later as a
-  // Cloudflare Redirect Rule, or as a second custom_domain entry.)
-  "routes": [{ "pattern": "russelldsmith.com", "custom_domain": true }]
+  // Bind the Worker to the production hostnames. `custom_domain` lets Cloudflare
+  // provision + manage each hostname's DNS record and SSL cert automatically.
+  // www is bound so it reaches the Worker, where Next 308-redirects it to the
+  // apex (see next.config.ts redirects()).
+  "routes": [
+    { "pattern": "russelldsmith.com", "custom_domain": true },
+    { "pattern": "www.russelldsmith.com", "custom_domain": true }
+  ]
 }
