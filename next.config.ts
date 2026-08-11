@@ -12,19 +12,9 @@ const nextConfig: NextConfig = {
     // next/image optimization is served by the Cloudflare IMAGES binding in prod.
     formats: ["image/avif", "image/webp"],
   },
-  // Canonicalize www → apex with a permanent (308) redirect, preserving path +
-  // query. www.russelldsmith.com is bound to this Worker as a custom domain
-  // (wrangler.jsonc) so these requests reach Next and get redirected.
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.russelldsmith.com" }],
-        destination: "https://russelldsmith.com/:path*",
-        permanent: true,
-      },
-    ];
-  },
+  // NB: www → apex canonicalization is handled in middleware.ts (single clean
+  // 301, exact path + query). next.config redirects() with an absolute
+  // destination mishandles the root path (emits a literal ":path*").
 };
 
 export default nextConfig;
