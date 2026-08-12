@@ -7,10 +7,22 @@ import { NextResponse, type NextRequest } from "next/server";
  * through untouched. Auth is handled in the admin server layouts, not here.
  */
 export function middleware(req: NextRequest) {
+  const path = `${req.nextUrl.pathname}${req.nextUrl.search}`;
+
+  // www → apex (also forces https for www).
   if (req.headers.get("host") === "www.russelldsmith.com") {
-    const dest = `https://russelldsmith.com${req.nextUrl.pathname}${req.nextUrl.search}`;
-    return NextResponse.redirect(dest, 301);
+    return NextResponse.redirect(`https://russelldsmith.com${path}`, 301);
   }
+
+  // http → https. Cloudflare tags the original scheme in `cf-visitor`
+  // ({"scheme":"http"|"https"}); "https" never contains the quoted "http" token,
+  // so this only fires for real http requests — no redirect loop.
+  const cfv = req.headers.get("cf-visitor") || "";
+  if (cfv.includes('"scheme":"http"') || req.headers.get("x-forwarded-proto") === "http") {
+    const host = req.headers.get("host") || "russelldsmith.com";
+    return NextResponse.redirect(`https://${host}${path}`, 301);
+  }
+
   return NextResponse.next();
 }
 

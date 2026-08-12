@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllPosts, getAllCategories, getAllTags, SITE_URL } from "@/lib/content";
+import { getAllPosts, getAllCategories, SITE_URL } from "@/lib/content";
 import { LANDING_PAGES } from "@/lib/routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -24,8 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const c of getAllCategories()) {
     entries.push({ url: `${SITE_URL}/blog/category/${c.slug}/`, changeFrequency: "weekly", priority: 0.4 });
   }
-  for (const t of getAllTags()) {
-    entries.push({ url: `${SITE_URL}/blog/tag/${t.slug}/`, changeFrequency: "monthly", priority: 0.3 });
-  }
+  // Tag archives are intentionally excluded — they're noindex (thin/near-duplicate),
+  // so a sitemap listing would just create "noindex URL in sitemap" warnings.
   return entries;
 }

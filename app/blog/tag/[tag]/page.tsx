@@ -20,6 +20,10 @@ export async function generateMetadata({
     title: `${label}`,
     description: `Mortgage guides tagged ${label} from Russell Smith.`,
     alternates: { canonical: `/blog/tag/${tag}/` },
+    // Tag archives are thin/near-duplicate (most have a single post) and carry no
+    // redirect equity — keep them usable for readers but out of the index.
+    // Links are still followed so the posts they list stay well-crawled.
+    robots: { index: false, follow: true },
   };
 }
 
