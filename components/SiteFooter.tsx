@@ -108,9 +108,20 @@ export function SiteFooter() {
           </p>
           <p className="mt-5 max-w-4xl text-xs leading-5 text-white/55">{COMPLIANCE.disclaimer}</p>
           <p className="mt-2 max-w-4xl text-xs leading-5 text-white/55">{COMPLIANCE.privacy}</p>
-          <p className="mt-6 text-xs text-white/60">
-            © {year} {SITE.name}. All rights reserved.
-          </p>
+          <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-xs text-white/60">© {year} {SITE.name}. All rights reserved.</p>
+            <p className="text-xs text-white/60">
+              Built by{" "}
+              <a
+                href="https://solagon.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-white/85 underline-offset-2 hover:text-white hover:underline"
+              >
+                Solagon
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
