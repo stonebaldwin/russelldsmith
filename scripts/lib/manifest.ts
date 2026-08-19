@@ -14,6 +14,7 @@ import {
   SITE_URL,
 } from "../../lib/content.js";
 import { CORE_ROUTES, LANDING_PAGES } from "../../lib/routes.js";
+import { CALCULATOR_PATHS } from "../../lib/calculators.js";
 
 export interface Manifest {
   siteUrl: string;
@@ -52,7 +53,14 @@ export function buildManifest(opts: { write?: boolean } = {}): Manifest {
   const landingPaths = LANDING_PAGES.map((l) => `/${l.slug}/`);
 
   const allPaths = Array.from(
-    new Set([...CORE_ROUTES, ...landingPaths, ...postPaths, ...categoryPaths, ...tagPaths]),
+    new Set([
+      ...CORE_ROUTES,
+      ...landingPaths,
+      ...CALCULATOR_PATHS,
+      ...postPaths,
+      ...categoryPaths,
+      ...tagPaths,
+    ]),
   ).sort();
 
   const manifest: Manifest = {

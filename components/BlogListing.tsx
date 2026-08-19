@@ -9,6 +9,7 @@ export function BlogListing({
   page = 1,
   totalPages = 1,
   rootPath = "/blog/",
+  aboveGrid,
 }: {
   title: string;
   description?: string;
@@ -16,6 +17,10 @@ export function BlogListing({
   page?: number;
   totalPages?: number;
   rootPath?: string;
+  /** Optional section rendered between the header and the article grid — used
+   *  to put a topic video playlist above the guides. Rendered bare, so it must
+   *  bring its own top margin (and can render nothing). */
+  aboveGrid?: React.ReactNode;
 }) {
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -25,6 +30,8 @@ export function BlogListing({
         </h1>
         {description ? <p className="mt-3 text-lg leading-8 text-muted">{description}</p> : null}
       </header>
+
+      {aboveGrid}
 
       {posts.length ? (
         <div className="mt-10 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">

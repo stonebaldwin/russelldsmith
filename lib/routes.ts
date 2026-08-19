@@ -17,6 +17,8 @@ export interface LandingPage {
   category?: string;
   /** kind of page for rendering */
   kind: "loan" | "tool";
+  /** calculator slugs (lib/calculators.ts) to surface on this page */
+  calculators?: string[];
 }
 
 export const LANDING_PAGES: LandingPage[] = [
@@ -28,6 +30,7 @@ export const LANDING_PAGES: LandingPage[] = [
       "VA home loan guidance for veterans and active-duty service members: eligibility, funding fees, appraisals, and $0-down purchases.",
     category: "va-loans",
     kind: "loan",
+    calculators: ["va-loan", "payment"],
   },
   {
     slug: "usda-loans",
@@ -37,6 +40,7 @@ export const LANDING_PAGES: LandingPage[] = [
       "USDA rural development loans: 100% financing, income and property eligibility, and how to qualify in NC and SC.",
     category: "usda",
     kind: "loan",
+    calculators: ["payment", "home-affordability"],
   },
   {
     slug: "fha-loans",
@@ -46,6 +50,7 @@ export const LANDING_PAGES: LandingPage[] = [
       "FHA loans explained: low down payments, credit guidelines, mortgage insurance, and first-time buyer options.",
     category: "fha",
     kind: "loan",
+    calculators: ["payment", "home-affordability"],
   },
   {
     slug: "renovation-loans",
@@ -70,6 +75,7 @@ export const LANDING_PAGES: LandingPage[] = [
     description:
       "Down payment assistance programs and grants for buyers in North and South Carolina.",
     kind: "loan",
+    calculators: ["home-affordability", "payment"],
   },
   {
     slug: "reverse-mortgages",
@@ -88,19 +94,26 @@ export const LANDING_PAGES: LandingPage[] = [
     kind: "loan",
   },
   {
+    // Kept at this slug on purpose: it's the 301 destination for the old
+    // /rental-properties/ (40 referring domains). /real-estate-investors/ is
+    // 301'd here by middleware.ts as a memorable alias Russell can hand out.
     slug: "investment-property-loans",
-    title: "Investment Property Loans",
-    nav: "Investment",
+    title: "Real Estate Investor Loans",
+    nav: "Real Estate Investors",
     description:
-      "Financing for rental and investment properties: DSCR loans, down payments, and qualifying with rental income.",
+      "Financing built for real estate investors: DSCR loans that qualify on the property's own rent, purchase-rehab, HELOCs, and portfolio strategies for building rental income.",
     kind: "loan",
+    calculators: ["dscr", "payment"],
   },
   {
+    // Rendered by app/mortgage-calculators/page.tsx (see CUSTOM_LANDING_ROUTES),
+    // which owns its own <title>/description. This entry exists so the sitemap,
+    // nav, and build manifest still know the page.
     slug: "mortgage-calculators",
     title: "Mortgage Calculators",
     nav: "Calculators",
     description:
-      "Free mortgage calculators: monthly payment, affordability, and VA funding fee estimates.",
+      "Free mortgage calculators: monthly payment, VA loan, affordability, refinance, rent vs. buy, DSCR rental, and seller net proceeds.",
     kind: "tool",
   },
   {
@@ -110,10 +123,21 @@ export const LANDING_PAGES: LandingPage[] = [
     description:
       "Current VA funding fee tables for purchase, cash-out, and IRRRL refinances, with exemptions.",
     kind: "tool",
+    calculators: ["va-loan"],
   },
 ];
 
-export const LANDING_SLUGS = LANDING_PAGES.map((p) => p.slug);
+/**
+ * Landing slugs that are served by their own static route instead of the
+ * catch-all app/[landing]/page.tsx. They stay in LANDING_PAGES (the sitemap,
+ * nav, and build manifest all read from it) but must be excluded from that
+ * route's generateStaticParams, or two routes would claim the same path.
+ */
+export const CUSTOM_LANDING_ROUTES = ["mortgage-calculators"];
+
+export const LANDING_SLUGS = LANDING_PAGES.filter(
+  (p) => !CUSTOM_LANDING_ROUTES.includes(p.slug),
+).map((p) => p.slug);
 
 /** Core (non-landing, non-blog) routes that must exist. */
 export const CORE_ROUTES = ["/", "/blog/", "/about/", "/contact/"];
@@ -127,7 +151,7 @@ export const PRIMARY_NAV: { label: string; href: string }[] = [
   { label: "USDA", href: "/usda-loans/" },
   { label: "FHA", href: "/fha-loans/" },
   { label: "First-Time Buyers", href: "/blog/category/1st-time-buyers/" },
-  { label: "Guides", href: "/blog/" },
+  { label: "Investors", href: "/investment-property-loans/" },
   { label: "Calculators", href: "/mortgage-calculators/" },
   { label: "About", href: "/about/" },
 ];

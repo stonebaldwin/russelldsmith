@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getAllCategories, getPostsByCategory, categoryLabel } from "@/lib/content";
 import { BlogListing } from "@/components/BlogListing";
+import { TopicVideos } from "@/components/TopicVideos";
 
 export const dynamicParams = false;
 
@@ -38,6 +39,7 @@ export default async function CategoryPage({
       description={`Every ${label} guide, in one place.`}
       posts={posts}
       rootPath={`/blog/category/${category}/`}
+      aboveGrid={<TopicVideos className="mt-10" topic={category} />}
     />
   );
 }

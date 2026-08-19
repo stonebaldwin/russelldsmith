@@ -5,10 +5,9 @@ import { getPostsMatching } from "@/lib/content";
 import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
 import { ApplyLink } from "@/components/ApplyLink";
-import { MortgageCalculator } from "@/components/MortgageCalculator";
+import { CalculatorLinks } from "@/components/CalculatorCards";
 import { VAFundingFeeTable } from "@/components/VAFundingFeeTable";
-import { VideoPlayer } from "@/components/VideoPlayer";
-import { getPlaylistForTopic } from "@/lib/youtube";
+import { TopicVideos } from "@/components/TopicVideos";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
@@ -47,9 +46,13 @@ const KEYWORDS: Record<string, string[]> = {
   "down-payment-assistance": ["down payment", "assistance", "dpa", "grant", "first-time"],
   "reverse-mortgages": ["reverse", "hecm", "62"],
   "jumbo-loans": ["jumbo", "conforming loan limit", "high balance"],
-  "investment-property-loans": ["rental", "investment", "dscr", "multifamily"],
-  "mortgage-calculators": ["calculator", "payment", "afford"],
+  "investment-property-loans": ["rental", "investment", "dscr", "multifamily", "brrrr"],
   "va-funding-fee-tables": ["va", "funding fee", "irrrl"],
+};
+
+/** Per-page heading for the video section (falls back to the page title). */
+const VIDEO_HEADINGS: Record<string, string> = {
+  "investment-property-loans": "Watch: Russell's real estate investor series",
 };
 
 export default async function LandingPage({
@@ -65,7 +68,6 @@ export default async function LandingPage({
     category: page.category,
     limit: 6,
   });
-  const playlist = getPlaylistForTopic(page.slug);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
@@ -88,9 +90,9 @@ export default async function LandingPage({
         </div>
       </header>
 
-      {page.slug === "mortgage-calculators" ? (
-        <div className="mt-10">
-          <MortgageCalculator />
+      {page.calculators?.length ? (
+        <div className="mt-8">
+          <CalculatorLinks slugs={page.calculators} />
         </div>
       ) : null}
 
@@ -100,19 +102,12 @@ export default async function LandingPage({
         </div>
       ) : null}
 
-      {playlist && playlist.videos.length ? (
-        <section className="mt-16">
-          <h2 className="border-b-2 border-accent/15 pb-2.5 font-serif text-2xl font-medium text-accent">
-            Watch: {page.title} on video
-          </h2>
-          <p className="mt-3 max-w-2xl text-muted">
-            {playlist.videos.length} short video guides from Russell&rsquo;s {page.title} series.
-          </p>
-          <div className="mt-6">
-            <VideoPlayer playlist={playlist} />
-          </div>
-        </section>
-      ) : null}
+      {/* Video ahead of the article rail — it's Russell's newest content. */}
+      <TopicVideos
+        className="mt-16"
+        topic={page.slug}
+        heading={VIDEO_HEADINGS[page.slug] ?? `Watch: ${page.title} on video`}
+      />
 
       {related.length ? (
         <div className="mt-16">

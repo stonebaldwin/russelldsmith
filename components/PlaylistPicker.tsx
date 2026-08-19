@@ -9,8 +9,8 @@ function shortName(title: string): string {
   return title.split(/[:|]/)[0].trim();
 }
 
-/** Homepage video card: one playlist player + a selector to switch playlists. */
-export function HomeVideos({ playlists }: { playlists: Playlist[] }) {
+/** One playlist player + a pill selector to switch between playlists. */
+export function PlaylistPicker({ playlists }: { playlists: Playlist[] }) {
   const [idx, setIdx] = useState(0);
   if (!playlists.length) return null;
   const active = playlists[idx];

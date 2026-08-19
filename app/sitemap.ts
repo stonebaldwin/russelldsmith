@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllPosts, getAllCategories, SITE_URL } from "@/lib/content";
 import { LANDING_PAGES } from "@/lib/routes";
+import { CALCULATOR_PATHS } from "@/lib/calculators";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [
@@ -12,6 +13,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   for (const p of LANDING_PAGES) {
     entries.push({ url: `${SITE_URL}/${p.slug}/`, changeFrequency: "monthly", priority: 0.8 });
+  }
+  for (const path of CALCULATOR_PATHS) {
+    entries.push({ url: `${SITE_URL}${path}`, changeFrequency: "monthly", priority: 0.7 });
   }
   for (const post of getAllPosts()) {
     entries.push({

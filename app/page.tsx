@@ -57,6 +57,12 @@ export default function Home() {
         <ExperienceSection />
       </div>
 
+      {/* Video sits above the article rails: it's Russell's newest, most
+          differentiated content, so it shouldn't be buried below 300+ guides. */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <VideoSection />
+      </div>
+
       {/* Resources / blog */}
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex items-end justify-between border-b-2 border-accent pt-14 pb-3">
@@ -89,8 +95,6 @@ export default function Home() {
             ))}
 
             <SectionRail title="Latest guides" href="/blog/" posts={posts.slice(0, 6)} />
-
-            <VideoSection />
 
             <Testimonials title="What our clients think" limit={6} />
 

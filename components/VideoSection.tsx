@@ -1,5 +1,5 @@
 import { getPlaylists, getChannel } from "@/lib/youtube";
-import { HomeVideos } from "./HomeVideos";
+import { PlaylistPicker } from "./PlaylistPicker";
 
 /** Homepage video section — one playlist player + a selector to switch playlists. */
 export function VideoSection() {
@@ -24,7 +24,7 @@ export function VideoSection() {
         Russell breaks down every loan type on YouTube — pick a series and start watching.
       </p>
       <div className="mt-6">
-        <HomeVideos playlists={playlists} />
+        <PlaylistPicker playlists={playlists} />
       </div>
     </section>
   );

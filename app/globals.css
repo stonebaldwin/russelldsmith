@@ -242,3 +242,40 @@
   text-align: center;
   margin-top: 0.5em;
 }
+
+/* ------------------------------------------------------------------ */
+/* Embedded RebelIQ calculators. DORMANT: RebelIQ's calculators paint    */
+/* blank in a cross-origin iframe, so CalculatorPanel opens them in a new */
+/* tab instead (EMBED = false). These rules are what turns back on if     */
+/* RebelIQ ever ships an embeddable mode — see lib/calculators.ts.        */
+/*                                                                     */
+/* RebelIQ doesn't postMessage its content height, so we size the frame */
+/* from three measured anchors and interpolate in CSS — zero JS, zero   */
+/* layout shift. The anchors are content heights at iframe widths of    */
+/* 390 / 768 / 1120px; --calc-slope is (mid - narrow) / 378, i.e. the   */
+/* px-of-height per px-of-width between the first two anchors.          */
+/*                                                                     */
+/* The offsets below convert page viewport width to iframe width:       */
+/* the embed sits in a max-w-6xl px-4 sm:px-6 column, so the frame is   */
+/* 100vw - 32px (mobile) or 100vw - 48px (sm and up), capped at 1104px. */
+/* ------------------------------------------------------------------ */
+.calc-embed {
+  height: calc(var(--calc-h-narrow) + var(--calc-slope) * (100vw - 422px));
+}
+@media (min-width: 640px) {
+  .calc-embed {
+    height: calc(var(--calc-h-narrow) + var(--calc-slope) * (100vw - 438px));
+  }
+}
+/* Frame is now ≥768px wide — RebelIQ's single-column height plateaus here. */
+@media (min-width: 816px) {
+  .calc-embed {
+    height: var(--calc-h-mid);
+  }
+}
+/* Frame is now ≥1024px wide — RebelIQ switches to its two-column layout. */
+@media (min-width: 1072px) {
+  .calc-embed {
+    height: var(--calc-h-wide);
+  }
+}
