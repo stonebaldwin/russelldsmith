@@ -1,17 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  CALCULATORS,
-  CALCULATOR_SLUGS,
-  calculatorPath,
-  getCalculator,
-} from "@/lib/calculators";
+import { CALCULATORS, CALCULATOR_SLUGS, calculatorPath, getCalculator } from "@/lib/calculators";
 import { getPostsMatching } from "@/lib/content";
-import { CalculatorPanel } from "@/components/CalculatorPanel";
+import { renderCalculator } from "@/components/calc/renderCalculator";
 import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
-import { ApplyLink } from "@/components/ApplyLink";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/seo";
 
@@ -47,6 +41,7 @@ export default async function CalculatorPage({
   const calc = getCalculator(tool);
   if (!calc) notFound();
 
+  const calculator = renderCalculator(calc.slug);
   const related = getPostsMatching(calc.keywords, { limit: 3 });
   const others = CALCULATORS.filter((c) => c.slug !== calc.slug);
 
@@ -66,19 +61,27 @@ export default async function CalculatorPage({
         </Link>
       </nav>
 
-      <header className="mt-5 max-w-3xl">
-        <h1 className="font-serif text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
+      <header className="mt-5">
+        <h1 className="max-w-3xl font-serif text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
           {calc.title}
         </h1>
-        <p className="mt-4 text-lg leading-8 text-ink-soft">{calc.description}</p>
+        <p className="mt-4 max-w-3xl text-lg leading-8 text-ink-soft">{calc.description}</p>
+        <ul className="mt-5 flex flex-wrap gap-x-6 gap-y-2">
+          {calc.highlights.map((h) => (
+            <li key={h} className="flex items-baseline gap-2 text-sm text-muted">
+              <span aria-hidden="true" className="text-accent-2">
+                ✓
+              </span>
+              {h}
+            </li>
+          ))}
+        </ul>
       </header>
 
-      <div className="mt-8">
-        <CalculatorPanel calculator={calc} />
-      </div>
+      <div className="mt-8">{calculator}</div>
 
       {calc.seeAlso?.length ? (
-        <div className="mt-8 flex flex-wrap items-center gap-3">
+        <div className="mt-10 flex flex-wrap items-center gap-3">
           {calc.seeAlso.map((s) => (
             <Link
               key={s.href}
@@ -88,9 +91,6 @@ export default async function CalculatorPage({
               {s.label}
             </Link>
           ))}
-          <ApplyLink className="inline-flex rounded-md border border-accent/25 px-4 py-2.5 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-accent-pale/50">
-            Get pre-qualified
-          </ApplyLink>
         </div>
       ) : null}
 

@@ -145,14 +145,22 @@ export const CORE_ROUTES = ["/", "/blog/", "/about/", "/contact/"];
 /** Posts per page on the /blog index. */
 export const POSTS_PER_PAGE = 24;
 
-/** Primary top nav (label + href). Keep tight and scannable. */
+/**
+ * Primary top nav (label + href). Eight items only fit on one line at the lg
+ * breakpoint (976px of usable header width) if the labels stay tight — hence
+ * bare "VA / USDA / FHA" rather than "VA Loans", and "First-Time" rather than
+ * "First-Time Buyers". Measured at lg: ~941px of the 976 available, with the
+ * tighter `gap-3` SiteHeader applies below xl. A ninth item, or a longer label,
+ * will wrap the nav — check it at a 1024px viewport before adding either.
+ */
 export const PRIMARY_NAV: { label: string; href: string }[] = [
-  { label: "VA Loans", href: "/va-loans/" },
+  { label: "VA", href: "/va-loans/" },
   { label: "USDA", href: "/usda-loans/" },
   { label: "FHA", href: "/fha-loans/" },
-  { label: "First-Time Buyers", href: "/blog/category/1st-time-buyers/" },
+  { label: "First-Time", href: "/blog/category/1st-time-buyers/" },
   { label: "Investors", href: "/investment-property-loans/" },
   { label: "Calculators", href: "/mortgage-calculators/" },
+  { label: "Guides", href: "/blog/" },
   { label: "About", href: "/about/" },
 ];
 

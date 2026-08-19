@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { CALCULATORS, calculatorPath } from "@/lib/calculators";
+import Link from "next/link";
+import { CALCULATORS, calculatorPath, getCalculator } from "@/lib/calculators";
 import { getPostsMatching } from "@/lib/content";
 import { CalculatorCards } from "@/components/CalculatorCards";
+import { renderCalculator } from "@/components/calc/renderCalculator";
 import { SectionRail } from "@/components/SectionRail";
 import { CtaBlock } from "@/components/CtaBlock";
 import { ApplyLink } from "@/components/ApplyLink";
@@ -12,9 +14,10 @@ import { breadcrumbJsonLd, absoluteUrl } from "@/lib/seo";
  * /mortgage-calculators/ — the calculator hub.
  *
  * This URL is a 301 destination for the old site's /mortgage-calculators/
- * (68 referring domains), so it must stay a live 200 forever. It lists Russell's
- * whole RebelIQ suite; each calculator gets its own page so it can rank for its
- * own intent ("VA loan calculator", "DSCR calculator", …).
+ * (68 referring domains), so it must stay a live 200 forever. It runs the
+ * payment calculator inline — that's what most visitors to this URL came for —
+ * and links out to the rest, each on its own page so it can rank for its own
+ * intent ("VA loan calculator", "DSCR calculator", …).
  *
  * NB: "mortgage-calculators" is deliberately excluded from the [landing] route's
  * static params (see CUSTOM_LANDING_ROUTES in lib/routes.ts) so this static
@@ -29,6 +32,7 @@ export const metadata: Metadata = {
 };
 
 export default function CalculatorsHub() {
+  const primary = getCalculator("payment")!;
   const related = getPostsMatching(["calculator", "payment", "afford", "closing costs"], {
     limit: 6,
   });
@@ -72,11 +76,26 @@ export default function CalculatorsHub() {
       </header>
 
       <section className="mt-12">
+        <div className="flex flex-wrap items-end justify-between gap-2 border-b-2 border-accent/15 pb-2.5">
+          <h2 className="font-serif text-2xl font-medium text-accent">
+            Estimate your monthly payment
+          </h2>
+          <Link
+            href={calculatorPath(primary.slug)}
+            className="text-sm font-medium text-accent-2 hover:underline"
+          >
+            Open on its own page →
+          </Link>
+        </div>
+        <div className="mt-6">{renderCalculator(primary.slug)}</div>
+      </section>
+
+      <section className="mt-16">
         <h2 className="border-b-2 border-accent/15 pb-2.5 font-serif text-2xl font-medium text-accent">
-          Pick a calculator
+          The rest of the suite
         </h2>
         <div className="mt-6">
-          <CalculatorCards />
+          <CalculatorCards exclude={primary.slug} />
         </div>
       </section>
 

@@ -19,11 +19,12 @@ function CalculatorCard({ calculator }: { calculator: Calculator }) {
   );
 }
 
-/** The full calculator grid — used on the /mortgage-calculators/ hub. */
-export function CalculatorCards() {
+/** The calculator grid, optionally minus the one already on the page. */
+export function CalculatorCards({ exclude }: { exclude?: string }) {
+  const list = exclude ? CALCULATORS.filter((c) => c.slug !== exclude) : CALCULATORS;
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {CALCULATORS.map((c) => (
+      {list.map((c) => (
         <CalculatorCard key={c.slug} calculator={c} />
       ))}
     </div>
