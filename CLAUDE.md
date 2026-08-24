@@ -13,6 +13,7 @@ Rebuilding an old WordPress mortgage blog (`teammovemortgage.com`) as a modern N
 5. **Never hot-link images from teammovemortgage.com.** Download to `/public/images/blog/{slug}/`.
 6. **Log, never silently drop.** Any post that can't be fetched must be logged and recovered (Wayback) — never omitted.
 7. **The old domain + redirect Worker are keep-forever infrastructure.** Document them as such.
+8. **Never change the `/connect/` path.** `app/connect/page.tsx` is the destination behind the QR code printed into Russell's presentation decks and handouts (starting with the NC Realtors REO session). Decks already in the wild cannot be recalled, so the URL is permanent — change what is on the page, never where it lives.
 
 ## Content model
 - Posts: `/content/blog/{slug}.mdx` with frontmatter (`title, slug, description, date, categories, tags, hero, canonical, source_url`). See brief §4.2.

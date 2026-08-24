@@ -40,6 +40,8 @@ export const CTA = {
 export const SOCIAL = {
   facebook: "https://www.facebook.com/RussellTheMortgageStrategist/",
   youtube: "https://www.youtube.com/@RusselltheMortgageStrategist",
+  instagram: "https://www.instagram.com/russellthemortgagestrategist/",
+  linkedin: "https://www.linkedin.com/in/russellthemortgagestrategist/",
 } as const;
 
 /**

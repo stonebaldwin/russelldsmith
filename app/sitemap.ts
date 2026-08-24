@@ -9,6 +9,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/blog/`, changeFrequency: "daily", priority: 0.9 },
     { url: `${SITE_URL}/about/`, changeFrequency: "yearly", priority: 0.5 },
     { url: `${SITE_URL}/contact/`, changeFrequency: "yearly", priority: 0.5 },
+    // /connect/ is the QR-code destination printed into Russell's decks and
+    // handouts — the path is permanent, so keep it discoverable.
+    { url: `${SITE_URL}/connect/`, changeFrequency: "monthly", priority: 0.6 },
   ];
 
   for (const p of LANDING_PAGES) {
