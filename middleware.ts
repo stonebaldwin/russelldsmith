@@ -9,6 +9,10 @@ const PATH_ALIASES: Record<string, string> = {
   "/real-estate-investors/": "/investment-property-loans/",
   "/investors/": "/investment-property-loans/",
   "/calculators/": "/mortgage-calculators/",
+  // /watch/ was briefly the URL of the Aug 31 2026 weekly video before it moved
+  // to its dated slug. Kept so any copy of that link already sent out still
+  // lands. Safe to drop, or to re-point at the newest episode, later.
+  "/watch/": "/mortgage-strategist-weekly-aug-31-2026/",
 };
 
 /**

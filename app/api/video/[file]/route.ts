@@ -20,13 +20,13 @@ export const dynamic = "force-dynamic";
  * entry rather than being interpolated into an asset path.
  */
 const ALLOWED: Record<string, { path: string; type: string; bytes: number }> = {
-  "russell-smith-message.mp4": {
-    path: "/media/video/russell-smith-message.mp4",
+  "mortgage-strategist-weekly-aug-31-2026.mp4": {
+    path: "/media/video/mortgage-strategist-weekly-aug-31-2026.mp4",
     type: "video/mp4",
     // Byte length of the committed asset. Needed because the ASSETS binding
     // does not set Content-Length on its response, and Content-Range/
-    // Content-Length here must state the true total. If the file is ever
-    // re-encoded, update this to match `wc -c` or ranges will be misreported.
+    // Content-Length here must state the true total. When adding an episode,
+    // set this to the file's exact `wc -c` or its ranges will be misreported.
     bytes: 22_643_093,
   },
 };
