@@ -26,7 +26,8 @@
     "images:fetch": "tsx scripts/fetch-stock-images.ts",
     "images:apply": "tsx scripts/apply-stock-images.ts",
     "content:index": "tsx scripts/build-blog-index.ts",
-    "gen:og": "tsx scripts/gen-og-image.ts"
+    "gen:og": "tsx scripts/gen-og-image.ts",
+    "gen:favicon": "tsx scripts/gen-favicon.ts"
   },
   "dependencies": {
     "github-slugger": "^2.0.0",
