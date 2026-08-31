@@ -19,10 +19,15 @@ export const dynamic = "force-dynamic";
  * Allowlist. The `[file]` param is attacker-controlled, so it selects a known
  * entry rather than being interpolated into an asset path.
  */
-const ALLOWED: Record<string, { path: string; type: string }> = {
+const ALLOWED: Record<string, { path: string; type: string; bytes: number }> = {
   "russell-smith-message.mp4": {
     path: "/media/video/russell-smith-message.mp4",
     type: "video/mp4",
+    // Byte length of the committed asset. Needed because the ASSETS binding
+    // does not set Content-Length on its response, and Content-Range/
+    // Content-Length here must state the true total. If the file is ever
+    // re-encoded, update this to match `wc -c` or ranges will be misreported.
+    bytes: 22_643_093,
   },
 };
 
@@ -109,7 +114,11 @@ export async function GET(req: Request, ctx: { params: Promise<{ file: string }>
 
   if (!upstream.ok) return new Response("Not found", { status: 404 });
 
-  const total = Number(upstream.headers.get("content-length"));
+  // Prefer what the asset layer reports, but the Workers ASSETS binding omits
+  // Content-Length entirely — fall back to the size recorded in ALLOWED so we
+  // still emit a truthful Content-Range instead of giving up and sending 200.
+  const reported = Number(upstream.headers.get("content-length"));
+  const total = Number.isFinite(reported) && reported > 0 ? reported : entry.bytes;
 
   // No range asked for (or we can't tell how big the file is): serve it whole,
   // but advertise that ranges are available so the player will ask next time.
