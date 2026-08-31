@@ -50,3 +50,8 @@ cloudflare-env.d.ts
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Camera originals for site video (hundreds of MB). The web-ready, size-capped
+# encode is committed under public/media/video/ — Workers static assets cap a
+# single file at 25 MiB, so raw .mov/.mp4 masters must never land in public/.
+/media-source/
