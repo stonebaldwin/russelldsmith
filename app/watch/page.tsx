@@ -15,7 +15,10 @@ import type { Metadata } from "next";
  * phone would run ~700px tall and push its own controls below the fold.
  */
 
-const VIDEO = "/media/video/russell-smith-message.mp4";
+// Served through the API route, not straight from /media/video/, because
+// Workers Static Assets ignores `Range` — without that route the scrubber
+// cannot seek. See app/api/video/[file]/route.ts.
+const VIDEO = "/api/video/russell-smith-message.mp4";
 const POSTER = "/media/video/russell-smith-message-poster.jpg";
 
 export const metadata: Metadata = {
