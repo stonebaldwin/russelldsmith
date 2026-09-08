@@ -19,6 +19,8 @@ export interface LandingPage {
   kind: "loan" | "tool";
   /** calculator slugs (lib/calculators.ts) to surface on this page */
   calculators?: string[];
+  /** optional real photo for the page header (public path + alt + caption) */
+  hero?: { src: string; alt: string; caption?: string };
 }
 
 export const LANDING_PAGES: LandingPage[] = [
@@ -31,6 +33,11 @@ export const LANDING_PAGES: LandingPage[] = [
     category: "va-loans",
     kind: "loan",
     calculators: ["va-loan", "payment"],
+    hero: {
+      src: "/media/site/russell-smith-team-veterans-parade.webp",
+      alt: "Russell Smith's team carrying an ALCOVA Mortgage banner honoring local veterans in a community parade",
+      caption: "Honoring our hometown heroes — Russell's team in the local veterans parade.",
+    },
   },
   {
     slug: "usda-loans",

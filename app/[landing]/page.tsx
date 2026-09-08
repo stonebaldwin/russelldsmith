@@ -90,6 +90,23 @@ export default async function LandingPage({
         </div>
       </header>
 
+      {/* Natural aspect, width-constrained: these are real photos where the
+          subject (a banner, a sign) is often the point, and a fixed-ratio crop
+          slices the very thing worth showing. */}
+      {page.hero ? (
+        <figure className="mt-8 max-w-3xl">
+          {/* eslint-disable-next-line @next/next/no-img-element -- local photo */}
+          <img
+            src={page.hero.src}
+            alt={page.hero.alt}
+            className="w-full rounded-xl border border-line"
+          />
+          {page.hero.caption ? (
+            <figcaption className="mt-2 text-sm text-muted">{page.hero.caption}</figcaption>
+          ) : null}
+        </figure>
+      ) : null}
+
       {page.calculators?.length ? (
         <div className="mt-8">
           <CalculatorLinks slugs={page.calculators} />

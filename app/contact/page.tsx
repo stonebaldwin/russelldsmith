@@ -12,13 +12,24 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-14 sm:px-6">
-      <h1 className="font-serif text-4xl font-semibold tracking-tight text-ink">
-        Let&rsquo;s talk about your mortgage
-      </h1>
-      <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
-        Whether you&rsquo;re just getting started or comparing options, {AUTHOR.name} can help you
-        understand what you qualify for — with no pressure. Serving {AUTHOR.servingArea}.
-      </p>
+      {/* A face on the page someone is deciding whether to call from. */}
+      <div className="grid gap-8 sm:grid-cols-[1fr_220px] sm:items-start">
+        <div>
+          <h1 className="font-serif text-4xl font-semibold tracking-tight text-ink">
+            Let&rsquo;s talk about your mortgage
+          </h1>
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-ink-soft">
+            Whether you&rsquo;re just getting started or comparing options, {AUTHOR.name} can help
+            you understand what you qualify for — with no pressure. Serving {AUTHOR.servingArea}.
+          </p>
+        </div>
+        {/* eslint-disable-next-line @next/next/no-img-element -- local portrait */}
+        <img
+          src="/media/site/russell-smith-mortgage-lender-nc-sc-va.webp"
+          alt={`${AUTHOR.name}, ${AUTHOR.role}`}
+          className="w-full rounded-xl border border-line object-cover"
+        />
+      </div>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         <a

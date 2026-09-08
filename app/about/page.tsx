@@ -50,30 +50,33 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="article-body mt-8">
-        <p>
-          Thinking about buying, building, refinancing, renovating, or investing? Choose my
-          team&rsquo;s top-notch experience. Reach out to start a discussion and experience the
-          difference &mdash; communication, responsiveness, efficiency, and execution.
-        </p>
-        <p>
-          I want to get to know our clients and their needs so that we can create a strategic plan.
-          Our goal is to provide the solutions that make home ownership a reality and affordable for
-          more people.
-        </p>
+      {/* Portrait photo sits beside the copy rather than above it: Russell's
+          photos are 3:4, and a full-width portrait would tower over the page. */}
+      <div className="mt-8 grid gap-8 sm:grid-cols-[1fr_260px] sm:items-start">
+        <div className="article-body">
+          <p>
+            Thinking about buying, building, refinancing, renovating, or investing? Choose my
+            team&rsquo;s top-notch experience. Reach out to start a discussion and experience the
+            difference &mdash; communication, responsiveness, efficiency, and execution.
+          </p>
+          <p>
+            I want to get to know our clients and their needs so that we can create a strategic plan.
+            Our goal is to provide the solutions that make home ownership a reality and affordable for
+            more people.
+          </p>
+        </div>
+        <figure className="sm:sticky sm:top-24">
+          {/* eslint-disable-next-line @next/next/no-img-element -- local portrait */}
+          <img
+            src="/media/site/russell-smith-mortgage-strategist-office.webp"
+            alt="Russell Smith seated at the ALCOVA Mortgage office"
+            className="w-full rounded-xl border border-line object-cover"
+          />
+          <figcaption className="mt-2 text-sm text-muted">
+            Russell at the ALCOVA Mortgage office.
+          </figcaption>
+        </figure>
       </div>
-
-      <figure className="mt-8">
-        {/* eslint-disable-next-line @next/next/no-img-element -- preserved local team photo */}
-        <img
-          src="/media/site/team-move-mortgage-about-page-pic.jpg"
-          alt="Russell Smith and his mortgage team"
-          className="w-full rounded-xl border border-line object-cover"
-        />
-        <figcaption className="mt-2 text-sm text-muted">
-          Russell Smith and his mortgage team.
-        </figcaption>
-      </figure>
 
       <section className="mt-12">
         <h2 className="font-serif text-2xl font-medium text-accent">Realtor benefits</h2>
@@ -87,6 +90,18 @@ export default function AboutPage() {
             help you do exactly that.
           </p>
         </div>
+        <figure className="mt-6">
+          {/* eslint-disable-next-line @next/next/no-img-element -- local photo */}
+          <img
+            src="/media/site/russell-smith-mortgage-education-panel.webp"
+            alt="Russell Smith recording an industry panel discussion with other mortgage professionals"
+            loading="lazy"
+            className="w-full rounded-xl border border-line object-cover"
+          />
+          <figcaption className="mt-2 text-sm text-muted">
+            Talking strategy with fellow industry professionals.
+          </figcaption>
+        </figure>
       </section>
 
       <section className="mt-12">
@@ -107,7 +122,19 @@ export default function AboutPage() {
             be.
           </p>
         </div>
-        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+        <figure className="mt-6">
+          {/* eslint-disable-next-line @next/next/no-img-element -- local family photo */}
+          <img
+            src="/media/site/russell-smith-family-coastal-carolina.webp"
+            alt="Russell Smith with his family at a coastal North Carolina venue"
+            loading="lazy"
+            className="w-full rounded-xl border border-line object-cover"
+          />
+          <figcaption className="mt-2 text-sm text-muted">
+            Family is the good part &mdash; home on the Carolina coast.
+          </figcaption>
+        </figure>
+        <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {QUOTES.map((q) => (
             <blockquote
               key={q.cite}

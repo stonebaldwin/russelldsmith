@@ -41,12 +41,12 @@ export function HomeHero() {
       </div>
 
       <div className="relative min-h-[340px] bg-accent-deep lg:min-h-0">
-        {/* eslint-disable-next-line @next/next/no-img-element -- preserved local team photo */}
+        {/* eslint-disable-next-line @next/next/no-img-element -- LCP image, served directly without the optimizer */}
         <img
-          src="/media/site/team-move-mortgage-pic.jpg"
-          alt="Russell Smith and his mortgage team"
+          src="/media/site/russell-smith-alcova-mortgage-dream-team.webp"
+          alt="Russell Smith at the ALCOVA Mortgage office, beside the Dream Team sign"
           fetchPriority="high"
-          className="absolute inset-0 h-full w-full object-cover object-center"
+          className="absolute inset-0 h-full w-full object-cover object-[center_30%]"
         />
       </div>
     </section>
