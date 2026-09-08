@@ -68,8 +68,8 @@ export default function AboutPage() {
         <figure className="sm:sticky sm:top-24">
           {/* eslint-disable-next-line @next/next/no-img-element -- local portrait */}
           <img
-            src="/media/site/russell-smith-mortgage-strategist-office.webp"
-            alt="Russell Smith seated at the ALCOVA Mortgage office"
+            src="/media/site/russell-smith-alcova-mortgage-branch-partner.webp"
+            alt="Russell Smith, Branch Partner at ALCOVA Mortgage"
             className="w-full rounded-xl border border-line object-cover"
           />
           <figcaption className="mt-2 text-sm text-muted">
