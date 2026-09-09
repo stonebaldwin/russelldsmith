@@ -13,7 +13,7 @@ export const SITE = {
 // Harvested from Russell's ALCOVA loan-officer page (alcova.com/loan-officer/rsmith).
 export const AUTHOR = {
   name: "Russell Smith",
-  role: "Branch Partner, ALCOVA Mortgage",
+  role: "Branch Partner & Sr. Loan Officer, ALCOVA Mortgage",
   tagline: "The Mortgage Strategist",
   nmls: "78989",
   servingArea: "NC, SC & VA",
