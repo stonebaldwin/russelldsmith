@@ -16,6 +16,7 @@ import { RelatedPosts } from "@/components/RelatedPosts";
 import { CtaBlock } from "@/components/CtaBlock";
 import { Thumb } from "@/components/Thumb";
 import { JsonLd } from "@/components/JsonLd";
+import { formatDate } from "@/lib/format";
 
 export const dynamicParams = false;
 
@@ -76,6 +77,7 @@ export default async function ArticlePage({
   const toc = extractToc(post.body);
   const related = getRelatedPosts(post, 3);
   const category = post.categories[0];
+  const lastDated = post.updated || post.date;
 
   const crumbs = [
     { name: "Home", url: "/" },
@@ -146,10 +148,11 @@ export default async function ArticlePage({
       <div className="mt-10 lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:items-start lg:gap-12">
         <div className="mx-auto max-w-3xl lg:mx-0">
           <MarkdownBody markdown={post.body} />
-          {post.recovered ? (
+          {lastDated < "2024-01-01" ? (
             <p className="mt-10 rounded-lg border border-line bg-surface px-4 py-3 text-sm text-muted">
-              This guide was reviewed and updated for {new Date().getFullYear()}. Some figures
-              (loan limits, fees) change annually — contact Russell for current numbers.
+              This article is from our archive and was last dated {formatDate(lastDated)}.
+              Mortgage programs, limits, fees, and rules may have changed since then. Contact
+              Russell for current information before making a financial decision.
             </p>
           ) : null}
           <CtaBlock className="mt-14" />

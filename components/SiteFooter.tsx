@@ -88,6 +88,7 @@ export function SiteFooter() {
             <ul className="mt-3 space-y-2">
               <li><Link href="/about/" className="text-sm text-white/80 hover:text-white">About Russell</Link></li>
               <li><Link href="/contact/" className="text-sm text-white/80 hover:text-white">Contact</Link></li>
+              <li><Link href="/privacy/" className="text-sm text-white/80 hover:text-white">Privacy Policy</Link></li>
               <li><Link href="/mortgage-calculators/" className="text-sm text-white/80 hover:text-white">Calculators</Link></li>
             </ul>
           </nav>
@@ -107,7 +108,9 @@ export function SiteFooter() {
             Licensed in {COMPLIANCE.licensedStates}. {COMPLIANCE.stateNotices}
           </p>
           <p className="mt-5 max-w-4xl text-xs leading-5 text-white/55">{COMPLIANCE.disclaimer}</p>
-          <p className="mt-2 max-w-4xl text-xs leading-5 text-white/55">{COMPLIANCE.privacy}</p>
+          <p className="mt-2 max-w-4xl text-xs leading-5 text-white/55">
+            How we use data, cookies, and advertising services: <Link href="/privacy/" className="underline hover:text-white">Privacy Policy</Link>.
+          </p>
           <div className="mt-6 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-xs text-white/60">© {year} {SITE.name}. All rights reserved.</p>
             <p className="text-xs text-white/60">

@@ -5,6 +5,8 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ChromeGate } from "@/components/ChromeGate";
+import { ADSENSE_ADS_ENABLED, ADSENSE_CLIENT } from "@/lib/adsense";
+import { AdSenseLoader } from "@/components/AdSenseLoader";
 
 // Poppins is used only for the navbar wordmark.
 const poppins = Poppins({
@@ -43,6 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: [OG_DEFAULT.url],
   },
+  other: ADSENSE_CLIENT ? { "google-adsense-account": ADSENSE_CLIENT } : undefined,
 };
 
 export default function RootLayout({
@@ -65,6 +68,9 @@ export default function RootLayout({
         <ChromeGate>
           <SiteFooter />
         </ChromeGate>
+        {ADSENSE_ADS_ENABLED && ADSENSE_CLIENT ? (
+          <AdSenseLoader client={ADSENSE_CLIENT} />
+        ) : null}
         {/* Ahrefs Web Analytics */}
         <Script
           src="https://analytics.ahrefs.com/analytics.js"
