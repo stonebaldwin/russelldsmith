@@ -6,3 +6,8 @@
 
 /media/video/*
   Cache-Control: public,max-age=31536000,immutable
+
+/banker-success-sheet.pdf
+  Content-Type: application/pdf
+  Content-Disposition: inline; filename="russell-smith-banker-success-sheet.pdf"
+  Cache-Control: public,max-age=3600,must-revalidate
