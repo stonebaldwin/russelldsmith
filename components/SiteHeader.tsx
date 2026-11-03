@@ -11,12 +11,12 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-line bg-canvas/85 backdrop-blur supports-[backdrop-filter]:bg-canvas/75">
       <div className="mx-auto flex h-16 max-w-6xl items-center px-4 sm:px-6">
         <Wordmark />
-        <nav className="ml-auto hidden items-center gap-3 lg:flex xl:gap-6" aria-label="Primary">
+        <nav className="ml-auto hidden items-center gap-3 lg:flex xl:gap-4" aria-label="Primary">
           {PRIMARY_NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-medium whitespace-nowrap text-ink-soft transition-colors hover:text-accent"
+              className={`text-sm font-medium whitespace-nowrap text-ink-soft transition-colors hover:text-accent${item.wideOnly ? " hidden xl:inline" : ""}`}
             >
               {item.label}
             </Link>

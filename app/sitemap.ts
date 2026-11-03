@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // /connect/ is the QR-code destination printed into Russell's decks and
     // handouts — the path is permanent, so keep it discoverable.
     { url: `${SITE_URL}/connect/`, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${SITE_URL}/ask-russell/`, changeFrequency: "weekly", priority: 0.6 },
   ];
 
   for (const p of LANDING_PAGES) {

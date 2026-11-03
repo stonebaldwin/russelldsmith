@@ -19,6 +19,11 @@
   "images": {
     "binding": "IMAGES"
   },
+  // Cloudflare Email Service — sends Ask Russell registrations to Russell and
+  // Stone (app/api/ask-russell/register/route.ts). Requires russelldsmith.com
+  // onboarded under Email Service → Email Sending, and the recipients verified
+  // as Email Routing destination addresses. Root MX (Microsoft 365) untouched.
+  "send_email": [{ "name": "EMAIL" }],
   // Non-secret CMS config. Secrets (ADMIN_PASSWORD, SESSION_SECRET, GITHUB_TOKEN)
   // are set with `wrangler secret put` — never here. See docs/CMS.md.
   "vars": {

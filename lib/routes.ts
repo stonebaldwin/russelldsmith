@@ -160,7 +160,9 @@ export const POSTS_PER_PAGE = 24;
  * tighter `gap-3` SiteHeader applies below xl. A ninth item, or a longer label,
  * will wrap the nav — check it at a 1024px viewport before adding either.
  */
-export const PRIMARY_NAV: { label: string; href: string }[] = [
+/** `wideOnly` items show in the desktop bar only from xl up (the bar is full at
+ *  lg); they're always in the mobile menu. */
+export const PRIMARY_NAV: { label: string; href: string; wideOnly?: boolean }[] = [
   { label: "VA", href: "/va-loans/" },
   { label: "USDA", href: "/usda-loans/" },
   { label: "FHA", href: "/fha-loans/" },
@@ -168,6 +170,7 @@ export const PRIMARY_NAV: { label: string; href: string }[] = [
   { label: "Investors", href: "/investment-property-loans/" },
   { label: "Calculators", href: "/mortgage-calculators/" },
   { label: "Guides", href: "/blog/" },
+  { label: "Ask Russell", href: "/ask-russell/", wideOnly: true },
   { label: "About", href: "/about/" },
 ];
 
