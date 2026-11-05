@@ -243,9 +243,10 @@
   margin-top: 0.5em;
 }
 
-/* /ask-russell/ — smooth-scroll the hero's Register / Add to Calendar jumps. */
+/* /ask-russell/ and /events/ — smooth-scroll the hero's Register / Add to Calendar jumps. */
 @media (prefers-reduced-motion: no-preference) {
-  html:has(#ask-russell) {
+  html:has(#ask-russell),
+  html:has(#events) {
     scroll-behavior: smooth;
   }
 }

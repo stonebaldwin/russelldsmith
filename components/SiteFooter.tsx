@@ -88,6 +88,7 @@ export function SiteFooter() {
             <ul className="mt-3 space-y-2">
               <li><Link href="/about/" className="text-sm text-white/80 hover:text-white">About Russell</Link></li>
               <li><Link href="/contact/" className="text-sm text-white/80 hover:text-white">Contact</Link></li>
+              <li><Link href="/events/" className="text-sm text-white/80 hover:text-white">Events</Link></li>
               <li><Link href="/privacy/" className="text-sm text-white/80 hover:text-white">Privacy Policy</Link></li>
               <li><Link href="/mortgage-calculators/" className="text-sm text-white/80 hover:text-white">Calculators</Link></li>
             </ul>

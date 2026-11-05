@@ -11,6 +11,8 @@ import { ExperienceSection } from "@/components/ExperienceSection";
 import { Testimonials } from "@/components/Testimonials";
 import { JsonLd } from "@/components/JsonLd";
 import { websiteJsonLd, localBusinessJsonLd } from "@/lib/seo";
+import { upcomingEvents } from "@/lib/events";
+import { EventTeaser } from "@/components/EventCard";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -26,6 +28,7 @@ const HOME_RAILS = [
 export default function Home() {
   const posts = getAllPosts();
   const loanPrograms = LANDING_PAGES.filter((p) => p.kind === "loan");
+  const events = upcomingEvents().slice(0, 2);
 
   return (
     <>
@@ -51,6 +54,25 @@ export default function Home() {
           </ul>
         </div>
       </section>
+
+      {/* Upcoming events — hidden when nothing is scheduled (lib/events.ts). */}
+      {events.length > 0 && (
+        <section aria-labelledby="home-events-h" className="mx-auto max-w-6xl px-4 pt-14 sm:px-6">
+          <div className="flex items-end justify-between gap-4">
+            <h2 id="home-events-h" className="font-serif text-2xl font-medium text-accent sm:text-3xl">
+              Upcoming events
+            </h2>
+            <Link href="/events/" className="shrink-0 text-sm font-semibold text-accent-2 hover:underline">
+              All events &rarr;
+            </Link>
+          </div>
+          <div className="mt-5 grid gap-5">
+            {events.map((ev) => (
+              <EventTeaser key={ev.slug} event={ev} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* The best mortgage lender experience */}
       <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
