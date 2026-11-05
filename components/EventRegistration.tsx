@@ -261,7 +261,7 @@ export function EventRegistrationForm({ events }: { events: SiteEvent[] }) {
             id="ev-notes"
             name="notes"
             rows={3}
-            placeholder="e.g. Building two spec homes on lots I already own in Brunswick County"
+            placeholder="e.g. A BRRRR deal my bank passed on, or two spec homes on lots I own"
             className={INPUT}
           />
         </div>

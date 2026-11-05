@@ -31,6 +31,10 @@ export interface SiteEvent {
   summary: string;
   /** What attendees will learn. */
   topics: string[];
+  /** Guest speakers, shown on /events/. */
+  speakers?: { name: string; org?: string }[];
+  /** Short highlight chips (e.g. "No income verification"). */
+  highlights?: string[];
   /** Roles offered in the registration form's "I am a…" select. */
   roles: string[];
 }
@@ -38,19 +42,26 @@ export interface SiteEvent {
 export const EVENTS: SiteEvent[] = [
   {
     slug: "southport-spec-and-rental-builds-2026-12",
-    title: "Financing Spec Homes & Build-to-Rent: Flip + Ground-Up Construction",
+    title: "Investor & Builder Financing: Flips, BRRRR, and Spec & Rental Construction",
     date: "2026-12-02",
     city: "Southport, NC",
     audience: "Real estate investors and builders",
     summary:
-      "An in-person session in Southport showing investors and builders how our flip financing and ground-up construction financing work together — whether you're building a spec home to sell or building a property to hold as a rental.",
+      "Chris Lemons and Matt Puryear of CFS join Russell in Southport to show investors and builders how we finance property flips, BRRRR deals, and ground-up construction for spec homes and rentals — with no income verification, closing quickly in your LLC. Come find the solutions banks won't consider.",
     topics: [
-      "How flip (fix-and-flip) financing works and where it fits",
-      "Ground-up construction financing for new builds",
-      "Building a spec home to sell: structuring the loan from lot to sale",
-      "Building to hold: moving a finished build into a long-term rental loan",
-      "Live Q&A on your deals and projects",
+      "Fix-and-flip financing: purchase and rehab, closed fast",
+      "BRRRR transactions: buy, rehab, rent, refinance, repeat",
+      "Ground-up construction loans for spec homes you plan to sell",
+      "Building to rent: construction financing for properties you'll hold",
+      "No income verification, closing in your LLC",
+      "Live Q&A on your deals — including the ones your bank turned down",
     ],
+    speakers: [
+      { name: "Chris Lemons", org: "CFS" },
+      { name: "Matt Puryear", org: "CFS" },
+      { name: "Russell Smith", org: "ALCOVA Mortgage" },
+    ],
+    highlights: ["No income verification", "Close in your LLC", "Fast closings", "Flips · BRRRR · Construction"],
     roles: ["Investor", "Builder", "Realtor", "Other"],
   },
 ];

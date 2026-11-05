@@ -12,7 +12,7 @@ import { EventRegistrationForm } from "@/components/EventRegistration";
 
 const TITLE = "Events for Investors & Builders | Russell Smith";
 const DESCRIPTION =
-  "In-person events from Russell Smith for real estate investors and builders: how flip financing and ground-up construction financing work for spec homes and build-to-rent projects. Register free.";
+  "Free in-person events for real estate investors and builders: financing for flips, BRRRR deals, and spec and rental construction — no income verification, closing in your LLC. Register free.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -33,8 +33,8 @@ export default function EventsPage() {
         <div className="mx-auto max-w-3xl px-4 py-12 text-center sm:px-6 sm:py-16">
           <h1 className="font-serif text-4xl font-semibold tracking-tight sm:text-5xl">Events</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/85">
-            Free, in-person sessions where Russell walks investors and builders through the
-            financing behind real projects &mdash; and answers your questions on the spot.
+            Free, in-person sessions for investors and builders: the financing behind flips,
+            BRRRR deals, and new construction &mdash; the solutions banks won&rsquo;t consider.
           </p>
           {upcoming.length > 0 && (
             <a
@@ -92,6 +92,33 @@ export default function EventsPage() {
                   </dl>
 
                   <p className="mt-6 leading-7 text-ink-soft">{ev.summary}</p>
+
+                  {ev.highlights && ev.highlights.length > 0 && (
+                    <ul className="mt-5 flex flex-wrap gap-2">
+                      {ev.highlights.map((h) => (
+                        <li
+                          key={h}
+                          className="rounded-full border border-accent/20 bg-accent-pale px-3 py-1 text-sm font-medium text-accent"
+                        >
+                          {h}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {ev.speakers && ev.speakers.length > 0 && (
+                    <>
+                      <h4 className="mt-6 font-semibold text-ink">Speakers</h4>
+                      <ul className="mt-2 grid gap-2 sm:grid-cols-3">
+                        {ev.speakers.map((sp) => (
+                          <li key={sp.name} className="rounded-lg border border-line px-4 py-3">
+                            <p className="font-semibold text-ink">{sp.name}</p>
+                            {sp.org && <p className="text-sm text-muted">{sp.org}</p>}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
 
                   <h4 className="mt-6 font-semibold text-ink">What we&rsquo;ll cover</h4>
                   <ul className="mt-2 list-disc space-y-1.5 pl-5 text-ink-soft">
